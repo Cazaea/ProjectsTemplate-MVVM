@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <android.support.v4.widget.NestedScrollView xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/activity_nav_deed_back"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context=".ui.main.slider.NavFeedbackActivity">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/shape_not_clickable_bg"
+                android:lineSpacingExtra="2dp"
+                android:padding="12dp"
+                android:text="@string/string_github_issues_prompt"
+                android:textColor="#666666"
+                android:textSize="15sp" />
+
+
+            <LinearLayout
+                android:layout_marginTop="35dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"
+                    android:padding="10dp"
+                    android:text="@string/string_issues"
+                    android:textColor="@color/colorTabText"
+                    android:textSize="13sp" />
+
+
+                <TextView
+                    android:id="@+id/tv_issues"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/ripple_item_white_background"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="12dp"
+                    android:text="@string/string_github_project_name"
+                    android:textColor="@color/text_common"
+                    android:textSize="16sp" />
+
+                <View
+                    style="@style/horizontalLine"
+                    android:layout_marginStart="10dp" />
+
+                <TextView
+                    android:id="@+id/tv_common_problem"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/ripple_item_white_background"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="12dp"
+                    android:text="@string/string_common_problem"
+                    android:textColor="@color/text_common"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"
+                    android:padding="10dp"
+                    android:text="@string/string_contact_me"
+                    android:textColor="@color/colorTabText"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_qq"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/ripple_item_white_background"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="12dp"
+                    android:text="@string/string_qq"
+                    android:textColor="@color/text_common"
+                    android:textSize="16sp" />
+
+                <View
+                    style="@style/horizontalLine"
+                    android:layout_marginStart="10dp" />
+
+                <TextView
+                    android:id="@+id/tv_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/ripple_item_white_background"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="12dp"
+                    android:text="@string/string_email"
+                    android:textColor="@color/text_common"
+                    android:textSize="16sp" />
+
+                <View
+                    style="@style/horizontalLine"
+                    android:layout_marginStart="10dp" />
+
+                <TextView
+                    android:id="@+id/tv_jianshu"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/ripple_item_white_background"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="12dp"
+                    android:text="@string/string_jian_shu"
+                    android:textColor="@color/text_common"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</layout>

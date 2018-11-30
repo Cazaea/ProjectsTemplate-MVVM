@@ -1,0 +1,148 @@
+<resources>
+    <string name="app_name">濠寓新版</string>
+    <string name="app_description">这只是应用的介绍</string>
+
+    <string name="navigation_drawer_open">开启导航抽屉</string>
+    <string name="navigation_drawer_close">关闭导航抽屉</string>
+
+    <string name="action_settings">设置</string>
+    <string name="action_share">分享</string>
+
+    <!-- 提示信息 -->
+    <string name="account">账号：</string>
+    <string name="password">密码：</string>
+    <string name="phone_or_account">手机号/注册账号</string>
+    <string name="input_password">请输入密码</string>
+    <string name="login">登 录</string>
+    <string name="recover">找回密码</string>
+    <string name="quick_registration">手机号快速注册</string>
+    <string name="phone">手机号</string>
+    <string name="code">验证码</string>
+    <string name="new_password">新密码</string>
+    <string name="sms_code">短信验证码</string>
+    <string name="get_code">获取验证码</string>
+    <string name="input_new_password">输入新密码</string>
+    <string name="referrer">推荐人</string>
+    <string name="referrer_phone">推荐人手机号(没有可不填)</string>
+    <string name="register">注 册</string>
+
+    <!-- Web页面 -->
+    <string name="actionbar_web_open">打开链接</string>
+    <string name="actionbar_web_copy">复制链接</string>
+    <string name="actionbar_web_share">分享到</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank mFragment</string>
+    <string name="title_activity_base">BaseActivity</string>
+    <string name="actionbar_search">搜索</string>
+    <string name="actionbar_share">分享给朋友\(^o^)/~</string>
+    <string name="actionbar_more">更多信息</string>
+
+    <string name="picture_has_save_to">已保存至 %s</string>
+    <string name="string_github_issues_prompt">您好，很希望得到您的意见，由于没有线上反馈系统，您可以在GitHub的Issues处说明问题原因，也可以通过以下方式联系我，我将根据情况尽量处理哦 ~</string>
+    <string name="string_about">由于网易云音乐用了很久，特别喜爱它的界面风格，所以仿写了它的UI。如构成侵权请及时通知我修改或删除。
+        \n\n 大部分数据使用的是代码家的https://gank.io和豆瓣APIV2.0，一切数据解释权都归代码家和豆瓣所有。
+        \n\n 干货每日推荐内容缓存三天，每天12：30更新，如没有内容则取缓存。电影热映榜每日零点更新。
+        \n\n 整体采用Retrofit+RxJava+MvvM-DataBinding框架。
+        \n\n 我的GitHub：https://github.com/Cazaea
+        \n\n 参考J：https://github.com/youlookwhat
+        </string>
+
+    <string name="string_about_me">
+        Blog: https://cazaea.com
+        \nEmail: wistorm@mail.com | wistorm@cazaea.com
+    </string>
+
+    <string name="string_lib">
+         xrecyclerview
+        \n zoomlibrary
+        \n com.android.support:appcompat-v7:27.0.2
+        \n com.android.support:design:27.0.2
+        \n com.android.support:cardview-v7:27.0.2
+        \n com.squareup.retrofit2:retrofit:2.1.0
+        \n io.reactivex:rxandroid:1.2.0
+        \n com.nineoldandroids:library:2.4.0
+        \n jp.wasabeef:glide-transformations:2.0.1
+        \n com.youth.banner:banner:1.4.2
+        \n com.daimajia.slider:library:1.1.5@aar
+        \n com.cocosw:bottomsheet:1.+@aar
+        \n com.google.zxing:core:3.2.1
+        \n skin.support:skin-support:1.0.1
+        \n skin.support:skin-support-design:0.0.2
+    </string>
+
+    <string name="string_everyday_empty">暂时没有更新内容，去看看其他信息吧~</string>
+    <string name="string_share_text">发现了一个高仿网易云音乐的App，里面有大量IT干货，每天提供安卓，IOS等最新资讯，还有最新电影热映榜和大量书籍信息，大力推荐哦~：https://fir.im/cloudreader</string>
+
+    <!--项目布局文件引用的字符串-->
+    <string name="no_name">佚名</string>
+    <string name="string_rating">评分：</string>
+    <string name="string_rating_num">人评分</string>
+    <string name="string_type">类型：</string>
+    <string name="string_publisher">出版社：</string>
+    <string name="string_joke">------</string>
+    <string name="no_name_joke">匿名用户</string>
+
+    <!--url-->
+    <string name="string_url_cloudreader">https://github.com/youlookwhat/CloudReader</string>
+    <!--fir.im-->
+    <string name="string_url_new_version">https://fir.im/Lease</string>
+    <!--issues-->
+    <string name="string_url_issues">https://github.com/youlookwhat/CloudReader/issues</string>
+    <!--jianshu-->
+    <string name="string_url_jianshu">http://www.jianshu.com/users/e43c6e979831/latest_articles</string>
+    <string name="string_url_gankio">http://gank.io/api</string>
+    <string name="string_url_douban">https://developers.douban.com/wiki/?title=terms</string>
+    <!--更新日志-->
+    <string name="string_url_update_log">http://Cazaea.me/2016/12/30/%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97-%E4%BA%91%E9%98%85/</string>
+    <!--问题归纳-->
+    <string name="string_url_faq">http://Cazaea.me/2016/12/25/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98-%E4%BA%91%E9%98%85/</string>
+    <!--干货闲读-->
+    <string name="string_url_xiandu">https://gank.io/xiandu</string>
+    <!--玩安卓-->
+    <string name="string_url_wanandroid">http://www.wanandroid.com/index</string>
+    <!--每日推荐-->
+    <string name="string_url_trending">https://github.com/trending</string>
+
+    <string name="string_load_error">加载失败,点击重试</string>
+    <string name="string_loading">努力加载中...</string>
+    <string name="string_check_update">检查更新</string>
+    <string name="string_update_log">更新日志</string>
+    <string name="string_current_version">当前版本 V1.0.0</string>
+    <string name="string_give_star">给个Star吧</string>
+    <string name="string_star_description">很高兴您能使用，如感到满意请Star一下吧，我们将继续迭代，增加更多功能，O(∩_∩)O ~</string>
+    <string name="string_left_arrow">《</string>
+    <string name="string_right_arrow">》</string>
+    <string name="string_gank">代码家 · 干货集中营</string>
+    <string name="string_douban">豆瓣开发者服务使用条款</string>
+    <string name="string_scan_download">好用请推荐给你的小伙伴吧，使用微信、qq等扫描二维码，即可下载安装~</string>
+    <string name="string_share_app">分享云阅开源客户端</string>
+    <string name="string_satisfied_star">如感到满意请Star一下吧，我们将继续迭代，增加更多功能，O(∩_∩)O ~</string>
+    <string name="string_issues">Issues</string>
+    <string name="string_github_project_name">CloudReader</string>
+    <string name="string_common_problem">常见问题归纳</string>
+    <string name="string_qq">QQ</string>
+    <string name="string_email">Email</string>
+    <string name="string_jian_shu">简书</string>
+    <string name="string_contact_me">联系我</string>
+    <string name="string_have_header_activity">有头的activity</string>
+    <string name="string_title">标题</string>
+    <string name="string_jump">跳过</string>
+    <string name="string_save_image">保存</string>
+    <string name="string_back">返回</string>
+    <string name="string_developer_option">开发人员选项</string>
+    <string name="string_developer_mode">开发者模式</string>
+    <string name="string_developer_mode_on">开发者模式\n%s</string>
+    <string name="string_config_server">服务器地址配置</string>
+    <string name="string_select">选择</string>
+    <string name="string_formal_server">https://www.haoyu.top</string>
+    <string name="string_beta_server">http://lease.nfc-hxd.com</string>
+    <string name="string_input_server">输入服务器地址</string>
+    <string name="string_sure_config">确认配置</string>
+    <string name="string_offline_logger">离线日志本地展示</string>
+
+    <string name="string_my_gab">\t\t有一对情侣，男的非常懦弱，做什么事情之前都让女友先试。\n\t\t女友对此十分不满。\n\t\t一次，两人出海，返航时，飓风将小艇摧毁，幸亏女友抓住了一块木板才保住了两人的性命。\n\t\t女友问男友：“你怕吗？”\n\t\t男友从怀中掏出一把水果刀，说：\n\t\t“怕，但有鲨鱼来，我就用这个对付它。”\n\t\t女友只是摇头苦笑。\n\t\t不久，一艘货轮发现了他们，正当他们欣喜若狂时，一群鲨鱼出现了，女友大叫：\n\t\t“我们一起用力游，会没事的！”\n\t\t男友却突然用力将女友推进海里，扒着木板朝货轮游去，并喊道：\n\t\t“这次我先试！”\n\t\t女友惊呆了，望着男友的背影，感到非常绝望。\n\t\t鲨鱼正在靠近，可鲨鱼对女友不感兴趣而径直向男友游去，男友被鲨鱼凶猛地撕咬着，他发疯似地冲女友喊道：\n\t\t“我爱你！”\n\t\t女友获救了，甲板上的人都在默哀，船长坐到女友身边说：\n\t\t“小姐，他是我见过最勇敢的人。我们为他祈祷！”\n\t\t“不，他是个胆小鬼。”女友冷冷地说。\n\t\t“您怎么这样说呢？刚才我一直用望远镜观察你们，我清楚地看到他把你推开后用刀子割破了自己的手腕。鲨鱼对血腥味很敏感，如果他不这样做来争取时间，恐怕你永远不会出现在这艘船上。”\n\t\t“什么？”\n\t\t女友听到真相如同晴天霹雳，她悲痛欲绝，伤心无比，但她突然想到男友是做Java的。\n\t\t只有学做Java的程序员才有这么高的觉悟，Java是目前使用最为广泛的编程语言之一，它具有简单，面向对象，稳定，与平台无关，解释型，多线程，动态等特点。\n\t\t做Java的程序员品质优异，有强大的博学雅正融合的意识，并具备强大的心理承受能力，人文情怀，领袖气质。选择Java，就是选择成功！</string>
+
+
+
+</resources>

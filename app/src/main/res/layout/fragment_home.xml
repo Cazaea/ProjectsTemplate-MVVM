@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/srl_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAppBackground">
+
+        <!-- 模块功能 -->
+        <i.am.lucky.recycler.XRecyclerView
+            android:id="@+id/xrv_function"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            android:scrollbarFadeDuration="1"
+            android:scrollbars="none" />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+</layout>

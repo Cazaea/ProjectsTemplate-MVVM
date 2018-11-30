@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="develop"
+            type="com.hxd.root.vmodel.other.DevelopViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorDevelopBackground"
+            tools:ignore="UselessParent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:orientation="vertical"
+                android:paddingTop="15dp"
+                android:paddingBottom="100dp">
+
+                <!-- 使用开发者模式 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:background="@drawable/shape_develop_white_stroke"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical|start"
+                        android:paddingStart="10dp"
+                        android:text="@string/string_developer_mode"
+                        android:textColor="@color/colorDevelopTitle"
+                        android:textSize="14sp"
+                        tools:ignore="RtlSymmetry" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="end"
+                        android:gravity="end"
+                        android:orientation="horizontal">
+
+                        <Switch
+                            android:id="@+id/switch1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- 信息配置 -->
+                <LinearLayout
+                    android:id="@+id/ll_all_config"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <!-- 服务器地址配置 -->
+                    <LinearLayout
+                        android:id="@+id/server_config"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/shape_develop_white_stroke"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:gravity="center"
+                            android:text="@string/string_config_server"
+                            android:textColor="@color/colorDevelopTitle"
+                            android:textSize="16sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="36dp"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="5"
+                                android:background="@color/colorDevelopButton"
+                                android:gravity="center_vertical|start"
+                                android:paddingStart="10dp"
+                                android:text="@string/string_beta_server"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="14sp"
+                                tools:ignore="RtlSymmetry" />
+
+                            <Button
+                                android:id="@+id/select_beta"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="5dp"
+                                android:layout_weight="1"
+                                android:background="@color/colorDevelopButton"
+                                android:onClick="selectBeta"
+                                android:text="@string/string_select"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="36dp"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="5"
+                                android:background="@color/colorDevelopButton"
+                                android:gravity="center_vertical|start"
+                                android:paddingStart="10dp"
+                                android:text="@string/string_formal_server"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="14sp"
+                                tools:ignore="RtlSymmetry" />
+
+                            <Button
+                                android:id="@+id/select_formal"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="5dp"
+                                android:layout_weight="1"
+                                android:background="@color/colorDevelopButton"
+                                android:onClick="selectFormal"
+                                android:text="@string/string_select"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <EditText
+                            android:id="@+id/custom_server"
+                            android:layout_width="match_parent"
+                            android:layout_height="36dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@color/colorDevelopButton"
+                            android:focusable="false"
+                            android:hint="@string/string_input_server"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:paddingStart="10dp"
+                            android:singleLine="true"
+                            android:text="@={develop.server}"
+                            android:textColor="@color/colorWhite"
+                            android:textColorHint="@color/colorDevelopTitle"
+                            android:textSize="14sp"
+                            tools:ignore="Autofill,RtlSymmetry" />
+
+                        <Button
+                            android:id="@+id/define_select"
+                            android:layout_width="match_parent"
+                            android:layout_height="36dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@color/colorDevelopButton"
+                            android:onClick="defineSelect"
+                            android:text="@string/string_sure_config"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <!-- Logger日志打印 -->
+                    <LinearLayout
+                        android:id="@+id/develop_rubulls_config"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/shape_develop_white_stroke"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:gravity="center"
+                            android:text="@string/string_offline_logger"
+                            android:textColor="@color/colorDevelopTitle"
+                            android:textSize="16sp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_margin="5dp"
+                            android:background="@color/colorDevelopButton" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="5"
+                                android:gravity="center_vertical|start"
+                                android:padding="8dp"
+                                android:text="@string/string_my_gab"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="12sp"
+                                tools:ignore="RtlSymmetry" />
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+</layout>

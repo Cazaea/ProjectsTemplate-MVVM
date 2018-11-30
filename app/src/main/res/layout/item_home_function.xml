@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="adapter"
+            type="com.hxd.root.adapter.main.home.FunctionAdapter" />
+
+        <variable
+            name="bean"
+            type="com.hxd.root.bean.home.ModuleBean" />
+
+        <import type="android.text.Html" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/ll_home_function_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@color/colorWhite"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <ImageView
+            android:id="@+id/function_image"
+            app:layout_collapseMode="parallax"
+            app:layout_collapseParallaxMultiplier="0.7"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:scaleType="fitXY"
+            android:showFunctionImg='@{bean.pic_path}' />
+
+        <TextView
+            android:id="@+id/function_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="2"
+            android:singleLine="true"
+            android:text="@{bean.title}"
+            android:textColor="@color/colorMainTitle"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+</layout>

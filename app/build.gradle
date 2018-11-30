@@ -1,0 +1,195 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+    defaultConfig {
+        applicationId rootProject.ext.android.applicationId
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        // Used for intensive computing,
+        // especially image processing, computer graphics,
+        // computer vision, allowing developers to implement complex and superior applications with less code.
+        // Developers can concentrate on writing processing algorithms without having to worry about scheduling and load balancing issues
+        renderscriptTargetApi rootProject.ext.android.minSdkVersion
+        renderscriptSupportModeEnabled true
+        // Dex breaks through the limit of 65535
+        multiDexEnabled true
+        ndk {
+            // Select the corresponding library of the corresponding cpu type to be added
+            abiFilters 'armeabi-v7a', "x86"
+        }
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            // Beta: Add .debug to the package name
+            applicationIdSuffix ".debug"
+            // Custom app name
+            manifestPlaceholders = [
+                    app_name: "测试"
+            ]
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        release {
+            minifyEnabled true
+            manifestPlaceholders = [
+                    app_name: "正式"
+            ]
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    // Apply DataBinding
+    dataBinding {
+        enabled = true
+    }
+
+    // Specify Java JDK version 1.8 to facilitate the use of Lambda expressions
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    // https://github.com/ReactiveX/RxJava/issues/4445
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+    }
+
+    // Custom app output name
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "Test_${variant.versionName}.${buildTime()}_${variant.name}.apk"
+        }
+    }
+
+    // Exclude unwanted files to prevent library file build conflicts
+    packagingOptions {
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/dependencies.txt'
+        exclude 'META-INF/LGPL2.1'
+    }
+}
+
+/**
+ * App dependencies
+ */
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    // Test
+    testImplementation rootProject.ext.support["junit"]
+
+    // Package
+
+    //    implementation project(path: ':library:http')
+    implementation project(path: ':library:zoom')
+    implementation project(path: ':library:recycler')
+
+    // Android Support
+    implementation rootProject.ext.support["design"]
+    implementation rootProject.ext.support["support-v4"]
+    implementation rootProject.ext.support["support-v13"]
+    implementation rootProject.ext.support["cardview-v7"]
+    implementation rootProject.ext.support["appcompat-v7"]
+    implementation rootProject.ext.support["support-annotations"]
+    implementation rootProject.ext.support["multidex"]
+    implementation rootProject.ext.support["kotlin-jdk7"]
+
+    // rxJava
+    implementation rootProject.ext.dependencies["rxjava"]
+    implementation rootProject.ext.dependencies["rxandroid"]
+
+    // rx管理View的生命周期
+    implementation rootProject.ext.dependencies["rxlifecycle"]
+    implementation rootProject.ext.dependencies["rxlifecycle-components"]
+
+    // rxBinding
+    implementation rootProject.ext.dependencies["rxbinding"]
+
+    // rx权限请求
+    implementation rootProject.ext.dependencies["rxpermissions"]
+
+    // network
+    implementation rootProject.ext.dependencies["okhttp"]
+    implementation rootProject.ext.dependencies["retrofit"]
+    implementation rootProject.ext.dependencies["converter-gson"]
+    implementation rootProject.ext.dependencies["adapter-rxjava"]
+
+    // material-dialogs
+    implementation(rootProject.ext.dependencies["material-dialogs-core"]) {
+        exclude group: 'com.android.support'
+    }
+    implementation(rootProject.ext.dependencies["material-dialogs-commons"]) {
+        exclude group: 'com.android.support'
+    }
+
+    // glide图片加载库
+    implementation rootProject.ext.dependencies["glide"]
+    annotationProcessor rootProject.ext.dependencies["glide-compiler"]
+    implementation rootProject.ext.dependencies["glide-transformations"]
+
+    // json解析
+    implementation rootProject.ext.dependencies["gson"]
+
+    // Google LiveData和ViewModel组件
+    implementation rootProject.ext.dependencies["lifecycle-extensions"]
+    annotationProcessor rootProject.ext.dependencies["lifecycle-compiler"]
+    implementation rootProject.ext.dependencies["lifecycle-reactivestreams"]
+
+    // room
+    implementation rootProject.ext.dependencies["room-runtime"]
+    annotationProcessor rootProject.ext.dependencies["room-compiler"]
+    implementation rootProject.ext.dependencies["room-rxjava"]
+    implementation rootProject.ext.dependencies["paging-runtime"]
+
+    // zxing二维码
+    implementation rootProject.ext.dependencies["zxing"]
+
+    // logger
+    implementation rootProject.ext.dependencies["logger"]
+
+    // 蜂窝动画
+    implementation rootProject.ext.dependencies["nineoldandroids"]
+
+    // banner轮播图
+    implementation rootProject.ext.dependencies["banner"]
+
+    // slider
+    implementation rootProject.ext.dependencies["slider"]
+
+    // BottomSheet
+    implementation rootProject.ext.dependencies["bottomsheet"]
+
+    // LeakCanary
+    debugImplementation rootProject.ext.dependencies["leakcanary-android"]
+    debugImplementation rootProject.ext.dependencies["leakcanary-support-fragment"]
+    releaseImplementation rootProject.ext.dependencies["leakcanary-android-no-op"]
+
+    // Bugly
+    implementation rootProject.ext.dependencies["crash-report"]
+    implementation rootProject.ext.dependencies["native-crash-report"]
+
+    // router
+    implementation rootProject.ext.dependencies["router"]
+    annotationProcessor rootProject.ext.dependencies["router-compiler"]
+    implementation files('libs/commons-lang-2.6.jar')
+}
+
+// 打包日期(当前时间是UTC时区，以171010格式化时间输出)
+def buildTime() {
+    return new Date().format("yyMMdd", TimeZone.getTimeZone("UTC"))
+}

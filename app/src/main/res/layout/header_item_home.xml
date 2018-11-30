@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Banner父布局 -->
+        <RelativeLayout
+            android:id="@+id/rl_banner_parent"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:background="@color/colorAppBackground">
+
+            <!-- 广告轮播 -->
+            <com.youth.banner.Banner
+                android:id="@+id/home_banner"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:delay_time="5000"
+                app:image_scale_type="fit_xy"
+                app:indicator_drawable_selected="@drawable/banner_red"
+                app:indicator_drawable_unselected="@drawable/banner_grey"
+                app:indicator_height="9dp"
+                app:indicator_margin="3dp"
+                app:indicator_width="9dp"
+                app:is_auto_play="true"
+                app:scroll_time="1200" />
+
+            <!-- 资讯头条 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/shape_headlines"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/icon_headlines"
+                    tools:ignore="ContentDescription" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:background="@color/colorAppBackground" />
+
+                <com.hxd.root.view.MarqueeView
+                    android:id="@+id/home_flipper"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:autoStart="true"
+                    app:mvAnimDuration="500"
+                    app:mvGravity="left"
+                    app:mvInterval="3000"
+                    app:mvTextColor="@color/colorMainTitle" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <!-- 占位布局 -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/colorAppBackground" />
+
+    </LinearLayout>
+
+</layout>

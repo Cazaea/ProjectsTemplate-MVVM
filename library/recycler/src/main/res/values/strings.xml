@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">recycler</string>
+
+    <string name="view_header_hint_normal">下拉刷新...</string>
+    <string name="view_header_hint_release">释放刷新...</string>
+    <string name="view_header_last_time">上次更新时间：</string>
+    <string name="view_refreshing">正在刷新...</string>
+    <string name="view_refresh_done">刷新完成...</string>
+    <string name="view_loading">努力加载中...</string>
+    <string name="view_loading_no_more_data">没有更多内容了</string>
+
+</resources>
