@@ -11,7 +11,7 @@ import com.orhanobut.logger.Logger;
 import com.squareup.leakcanary.LeakCanary;
 import com.tencent.bugly.crashreport.CrashReport;
 
-import com.hxd.root.http.rxhttp.HttpUtils;
+import com.hxd.root.http.HttpUtils;
 import com.thejoyrun.router.Router;
 
 import java.util.Objects;

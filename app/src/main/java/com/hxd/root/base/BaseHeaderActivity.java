@@ -99,7 +99,7 @@ public abstract class BaseHeaderActivity<HV extends ViewDataBinding, SV extends 
         mTitleContainer.addView(bindingTitleView.getRoot());
         getWindow().setContentView(ll);
 
-        // Header
+        // HttpFixedParams
         RelativeLayout.LayoutParams headerParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         bindingHeaderView.getRoot().setLayoutParams(headerParams);
         RelativeLayout mHeaderContainer = (RelativeLayout) ll.findViewById(R.id.header_container);

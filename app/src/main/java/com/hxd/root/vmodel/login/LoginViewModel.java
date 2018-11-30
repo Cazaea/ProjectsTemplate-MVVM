@@ -11,11 +11,6 @@ import com.hxd.root.bean.login.LoginBean;
 import com.hxd.root.data.UserUtil;
 import com.hxd.root.data.room.Injection;
 import com.hxd.root.http.HttpClient;
-import com.hxd.root.http.rxhttp.utils.BaseResponse;
-import com.hxd.root.http.rxhttp.utils.BaseSubscriber;
-import com.hxd.root.http.rxhttp.utils.ResponseThrowable;
-import com.hxd.root.http.rxhttp.utils.ResponseTransformer;
-import com.hxd.root.http.rxhttp.utils.RxUtils;
 import com.hxd.root.utils.ToastUtil;
 import com.thejoyrun.router.Router;
 
@@ -23,7 +18,6 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-import retrofit2.Response;
 
 /**
  * @author Cazaea
@@ -57,22 +51,52 @@ public class LoginViewModel extends ViewModel {
         }
         HttpClient.Builder.getBaseServer()
                 .login(account.get(), password.get())
-                .compose(RxUtils.schedulersTransformer())
-                .compose(ResponseTransformer.handleResult())
-                .subscribe(new BaseSubscriber<LoginBean>(activity) {
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<LoginBean>() {
                     @Override
-                    public void onError(ResponseThrowable e) {
-                        ToastUtil.showShort(e.getCode()+e.getMessage());
+                    public void onSubscribe(Disposable d) {
+
                     }
 
                     @Override
-                    public void onResult(LoginBean bean) {
-                        Injection.get().addData(bean.getData());
-                        UserUtil.handleLoginSuccess();
-                        navigator.loadSuccess();
+                    public void onNext(LoginBean bean) {
+                        if (bean != null && bean.getData() != null && bean.getCode() == 1000) {
+                            Injection.get().addData(bean.getData());
+                            UserUtil.handleLoginSuccess();
+                            navigator.loadSuccess();
+                        } else {
+                            if (bean != null) {
+                                ToastUtil.showLong(bean.getMsg());
+                            }
+                        }
+
                     }
 
+                    @Override
+                    public void onError(Throwable e) {
+//                        ToastUtil.showShort(e.getMessage());
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
                 });
+//                .subscribe(new BaseSubscriber<LoginBean>(activity) {
+//                    @Override
+//                    public void onError(ResponseThrowable e) {
+//                        ToastUtil.showShort(e.getCode()+e.getMessage());
+//                    }
+//
+//                    @Override
+//                    public void onResult(LoginBean bean) {
+//                        Injection.get().addData(bean.getData());
+//                        UserUtil.handleLoginSuccess();
+//                        navigator.loadSuccess();
+//                    }
+//
+//                });
     }
 
     /**

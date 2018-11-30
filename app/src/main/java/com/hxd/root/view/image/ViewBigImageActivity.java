@@ -30,7 +30,7 @@ import java.util.List;
 import com.bumptech.glide.request.target.Target;
 import com.hxd.root.R;
 
-import com.hxd.root.http.rxhttp.utils.NetworkUtil;
+import com.hxd.root.http.rxutils.NetworkUtil;
 
 import com.hxd.root.utils.RxSaveImage;
 import com.hxd.root.utils.ToastUtil;

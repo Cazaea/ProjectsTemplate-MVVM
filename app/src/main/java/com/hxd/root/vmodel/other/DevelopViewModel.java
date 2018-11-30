@@ -3,15 +3,13 @@ package com.hxd.root.vmodel.other;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.arch.lifecycle.ViewModel;
-import android.databinding.Bindable;
 import android.databinding.ObservableField;
 import android.text.TextUtils;
-import android.view.View;
 
 import com.hxd.root.app.Constants;
 import com.hxd.root.app.RootApplication;
 import com.hxd.root.base.BaseActivity;
-import com.hxd.root.http.rxhttp.HttpUtils;
+import com.hxd.root.http.HttpUtils;
 import com.hxd.root.utils.SPUtils;
 import com.hxd.root.utils.ToastUtil;
 

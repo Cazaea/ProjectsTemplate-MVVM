@@ -168,7 +168,7 @@ public class FunctionAdapter3 extends RecyclerView.Adapter<RecyclerView.ViewHold
     }
 
     /**
-     * Header View
+     * HttpFixedParams View
      */
     private class HeaderViewHolder extends RecyclerView.ViewHolder {
 

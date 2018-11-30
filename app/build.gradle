@@ -22,7 +22,7 @@ android {
         multiDexEnabled true
         ndk {
             // Select the corresponding library of the corresponding cpu type to be added
-            abiFilters 'armeabi-v7a', "x86"
+            abiFilters 'armeabi','armeabi-v7a', "x86"
         }
     }
 
@@ -65,7 +65,7 @@ android {
     // Custom app output name
     applicationVariants.all { variant ->
         variant.outputs.all {
-            outputFileName = "Test_${variant.versionName}.${buildTime()}_${variant.name}.apk"
+            outputFileName = "Test_${buildTime()}.${variant.versionName}_${variant.name}.apk"
         }
     }
 
@@ -190,6 +190,6 @@ dependencies {
 }
 
 // 打包日期(当前时间是UTC时区，以171010格式化时间输出)
-def buildTime() {
+static def buildTime() {
     return new Date().format("yyMMdd", TimeZone.getTimeZone("UTC"))
 }

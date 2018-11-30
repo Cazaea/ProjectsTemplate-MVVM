@@ -15,9 +15,6 @@ import com.hxd.root.bean.product.pay.PayInfoBean;
 import com.hxd.root.bean.login.LoginBean;
 import com.hxd.root.data.room.User;
 
-import com.hxd.root.http.rxhttp.HttpUtils;
-import com.hxd.root.http.rxhttp.utils.BaseResponse;
-
 import io.reactivex.Observable;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -93,7 +90,7 @@ public interface HttpClient {
      */
     @FormUrlEncoded
     @POST("/app/login/check")
-    Observable<BaseResponse<LoginBean>> login(@Field("account") String account, @Field("password") String password);
+    Observable<LoginBean> login(@Field("account") String account, @Field("password") String password);
 
     /**
      * 注册

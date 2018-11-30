@@ -10,7 +10,7 @@ import com.hxd.root.bean.home.HeadlineBean;
 import com.hxd.root.bean.home.HomeInfoBean;
 import com.hxd.root.bean.home.ModuleBean;
 import com.hxd.root.http.HttpClient;
-import com.hxd.root.http.rxhttp.utils.RxUtils;
+import com.hxd.root.http.rxutils.RxUtils;
 import com.hxd.root.utils.ToastUtil;
 import com.hxd.root.vmodel.main.home.HomeNavigator.BannerNavigator;
 import com.hxd.root.vmodel.main.home.HomeNavigator.FunctionNavigator;
@@ -21,10 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
-import io.reactivex.schedulers.Schedulers;
 
 /**
  * @author Cazaea

@@ -47,7 +47,8 @@ public class RecoverViewModel extends ViewModel {
         if (!verifyPhoneInfo()) {
             return;
         }
-        HttpClient.Builder.getBaseServer().getCode(account.get(), Constants.CODE_TYPE_RECOVER)
+        HttpClient.Builder.getBaseServer()
+                .getCode(account.get(), Constants.CODE_TYPE_RECOVER)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<CommonBean>() {
@@ -75,7 +76,7 @@ public class RecoverViewModel extends ViewModel {
                         }
                     }
                 });
-//        activity.addSubscription(subscribe);
+//        activity.addDisposable(subscribe);
     }
 
     /**
@@ -85,7 +86,8 @@ public class RecoverViewModel extends ViewModel {
         if (!verifyRecoverInfo()) {
             return;
         }
-        HttpClient.Builder.getBaseServer().findPsw(account.get(), code.get(), password.get())
+        HttpClient.Builder.getBaseServer()
+                .findPsw(account.get(), code.get(), password.get())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<CommonBean>() {

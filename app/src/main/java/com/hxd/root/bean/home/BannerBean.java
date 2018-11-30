@@ -4,7 +4,7 @@ import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 
 import com.hxd.root.BR;
-import com.hxd.root.http.rxhttp.ParamNames;
+import com.hxd.root.http.rxutils.ParamNames;
 
 import java.io.Serializable;
 

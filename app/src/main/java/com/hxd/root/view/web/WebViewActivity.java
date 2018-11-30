@@ -24,7 +24,7 @@ import android.widget.TextSwitcher;
 import android.widget.TextView;
 
 import com.hxd.root.R;
-import com.hxd.root.http.rxhttp.utils.NetworkUtil;
+import com.hxd.root.http.rxutils.NetworkUtil;
 import com.hxd.root.utils.BaseTools;
 import com.hxd.root.utils.CommonUtils;
 import com.hxd.root.utils.ShareUtils;
