@@ -49,7 +49,7 @@ public class RxBus {
      * 提供了一个新的事件,根据code进行分发
      */
     public void post(int code, Object event) {
-        mBus.onNext(new RxBusBaseMessage(code, event));
+        mBus.onNext(RxBusObject.newInstance(code, event));
     }
 
     /**
@@ -80,11 +80,13 @@ public class RxBus {
      * @return
      */
     public <T> Observable<T> toObservable(final int code, final Class<T> eventType) {
-        return mBus.ofType(RxBusBaseMessage.class)
+        return mBus.ofType(RxBusObject.class)
                 .filter(event -> {
                     // 过滤code和eventType都相同的事件
                     return event.getCode() == code && eventType.isInstance(event.getObject());
-                }).map(RxBusBaseMessage::getObject).cast(eventType);
+                })
+                .map(RxBusObject::getObject)
+                .cast(eventType);
     }
 
     public void reset() {

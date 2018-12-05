@@ -20,21 +20,18 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import java.util.ArrayList;
-import java.util.Objects;
-
 import com.hxd.root.app.ConstantsImageUrl;
 import com.hxd.root.data.UserUtil;
 import com.hxd.root.databinding.ActivityMainBinding;
 import com.hxd.root.databinding.NavHeaderMainBinding;
 import com.hxd.root.http.rxevent.RxBus;
-import com.hxd.root.http.rxevent.RxBusBaseMessage;
+import com.hxd.root.http.rxevent.RxBusObject;
 import com.hxd.root.http.rxevent.RxCodeConstants;
 import com.hxd.root.ui.login.LoginActivity;
 import com.hxd.root.ui.main.HomeFragment2;
 import com.hxd.root.ui.main.slider.NavAboutActivity;
-import com.hxd.root.ui.main.slider.NavFeedbackActivity;
 import com.hxd.root.ui.main.slider.NavDownloadActivity;
+import com.hxd.root.ui.main.slider.NavFeedbackActivity;
 import com.hxd.root.ui.main.slider.NavHomePageActivity;
 import com.hxd.root.utils.CommonUtils;
 import com.hxd.root.utils.DialogBuild;
@@ -45,6 +42,9 @@ import com.hxd.root.view.MyFragmentPagerAdapter;
 import com.hxd.root.view.OnLoginListener;
 import com.hxd.root.view.statusbar.StatusBarUtil;
 import com.hxd.root.view.web.WebViewActivity;
+
+import java.util.ArrayList;
+import java.util.Objects;
 
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
@@ -356,8 +356,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * 每日推荐点击"新电影热映榜"跳转
      */
     private void initRxBus() {
-        Disposable disposable = RxBus.getDefault().toObservable(RxCodeConstants.JUMP_TYPE_TO_ONE, RxBusBaseMessage.class)
-                .subscribe(integer -> setCurrentItem(2));
+        Disposable disposable = RxBus.getDefault().toObservable(RxCodeConstants.JUMP_TYPE_TO_ONE, RxBusObject.class)
+                .subscribe(rxBusObject -> setCurrentItem(2));
         addSubscription(disposable);
     }
 

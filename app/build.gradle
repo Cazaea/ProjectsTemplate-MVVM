@@ -150,7 +150,7 @@ dependencies {
     annotationProcessor rootProject.ext.dependencies["lifecycle-compiler"]
     implementation rootProject.ext.dependencies["lifecycle-reactivestreams"]
 
-    // room
+    // room  A powerful SQLite object mapping library
     implementation rootProject.ext.dependencies["room-runtime"]
     annotationProcessor rootProject.ext.dependencies["room-compiler"]
     implementation rootProject.ext.dependencies["room-rxjava"]
