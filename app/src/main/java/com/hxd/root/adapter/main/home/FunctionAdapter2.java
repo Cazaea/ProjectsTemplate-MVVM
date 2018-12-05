@@ -18,6 +18,8 @@ import com.hxd.root.view.web.WebViewActivity;
  * @author Cazaea
  * @time 2017/6/23 17:24
  * @mail wistorm@sina.com
+ *
+ * 方案二：根据BaseRecyclerViewAdapter实现
  */
 public class FunctionAdapter2 extends BaseRecyclerViewAdapter<ModuleBean> {
 

@@ -4,6 +4,8 @@
 
     <data>
 
+        <import type="com.hxd.root.utils.DebugUtil" />
+
         <variable
             name="develop"
             type="com.hxd.root.vmodel.other.DevelopViewModel" />
@@ -223,7 +225,6 @@
                                 tools:ignore="RtlSymmetry" />
 
                         </LinearLayout>
-
 
                     </LinearLayout>
 

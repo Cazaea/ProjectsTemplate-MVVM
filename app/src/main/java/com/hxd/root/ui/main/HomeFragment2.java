@@ -194,6 +194,7 @@ public class HomeFragment2 extends BaseFragment<FragmentHome2Binding> {
         // 适配数据
         mInformationAdapter = new InformationAdapter(activity);
         mFooterBinding.xrvInformation.setAdapter(mInformationAdapter);
+        // 禁止抢占焦点
         mFooterBinding.xrvInformation.setFocusable(false);
     }
 

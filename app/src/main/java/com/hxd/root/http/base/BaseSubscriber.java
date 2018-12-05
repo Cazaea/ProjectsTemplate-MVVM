@@ -2,11 +2,9 @@ package com.hxd.root.http.base;
 
 import android.content.Context;
 
-import com.hxd.root.http.rxutils.NetworkUtil;
-import com.hxd.root.http.exception.CustomException;
+import com.hxd.root.http.exception.ApiException;
 import com.hxd.root.http.exception.ResponseThrowable;
-import com.hxd.root.utils.DebugUtil;
-import com.hxd.root.utils.ToastUtil;
+import com.hxd.root.http.rxutils.NetworkUtil;
 
 import io.reactivex.observers.DisposableObserver;
 
@@ -32,7 +30,6 @@ public abstract class BaseSubscriber<T> extends DisposableObserver<T> {
         // TODO some common as show loading  and check netWork is NetworkAvailable
         // if NetworkAvailable no ! Must to call onComplete
         if (!NetworkUtil.isNetworkConnected(context)) {
-//            ToastUtil.showShort("网络连接异常，请检查你的网络！");
             onComplete();
         }
     }
@@ -43,7 +40,7 @@ public abstract class BaseSubscriber<T> extends DisposableObserver<T> {
         if (e instanceof ResponseThrowable) {
             onError((ResponseThrowable) e);
         } else {
-            onError(new ResponseThrowable(e, CustomException.ERROR.UNKNOWN));
+            onError(new ResponseThrowable(e, ApiException.ERROR.UNKNOWN));
         }
     }
 
@@ -54,20 +51,9 @@ public abstract class BaseSubscriber<T> extends DisposableObserver<T> {
 
     }
 
-
-
     @Override
-    public void onNext(Object o) {
-        BaseResponse baseResponse = (BaseResponse) o;
-        if (baseResponse.getCode() == 1000) {
-            onResult((T) baseResponse.getResult());
-        } else if (baseResponse.getCode() == 330) {
-            DebugUtil.error(baseResponse.getMsg());
-        } else if (baseResponse.getCode() == 503) {
-            DebugUtil.error(baseResponse.getMsg());
-        } else {
-            ToastUtil.showShort("操作失败！错误代码:" + baseResponse.getCode());
-        }
+    public void onNext(T data) {
+        onResult(data);
     }
 
     public abstract void onError(ResponseThrowable e);

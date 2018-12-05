@@ -61,7 +61,6 @@ public class RootApplication extends MultiDexApplication {
         sRootApplication = this;
         // Logger tool initialization
         Logger.addLogAdapter(new AndroidLogAdapter());
-        DebugUtil.initDebugMode();
         // Initialize the routing framework
         Router.init(Constants.ROUTER_HEAD);
         Router.setHttpHost(Constants.ROUTER_WEBSITE);
@@ -70,7 +69,7 @@ public class RootApplication extends MultiDexApplication {
         // Load memory optimization check tool
         LeakCanary.install(this);
         // Initialize Bugly to force an update
-        CrashReport.initCrashReport(getApplicationContext(), "3977b2d86f", DebugUtil.isDebug);
+        CrashReport.initCrashReport(getApplicationContext(), "3977b2d86f", DebugUtil.isDebug());
         // Change font size without following the system
         initTextSize();
     }

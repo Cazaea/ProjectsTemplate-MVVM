@@ -9,7 +9,7 @@ import com.hxd.root.http.cache.Repository;
 
 /**
  * @author Cazaea
- * @data 2018/5/7
+ * @date 2018/5/7
  * @Description 首页ViewModel
  */
 

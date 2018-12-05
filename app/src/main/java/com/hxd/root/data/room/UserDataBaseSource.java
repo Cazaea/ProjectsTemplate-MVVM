@@ -3,17 +3,17 @@ package com.hxd.root.data.room;
 import android.annotation.SuppressLint;
 import android.support.annotation.NonNull;
 
-import java.util.List;
-
 import com.hxd.root.utils.AppExecutors;
 import com.hxd.root.utils.DebugUtil;
+
+import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 /**
  * @author Cazaea
- * @data 2018/4/19
+ * @date 2018/4/19
  * @Description
  */
 public class UserDataBaseSource {
@@ -113,8 +113,8 @@ public class UserDataBaseSource {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(users -> {
-//                        DebugUtil.error("----waitList.size():" + waits.size());
-//                        DebugUtil.error("----waitList:" + waits.toString());
+//                        DebugUtil.error("----waitList.size():" + users.size());
+//                        DebugUtil.error("----waitList:" + users.toString());
                 });
     }
 

@@ -2,38 +2,34 @@ package com.hxd.root.http;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.support.annotation.NonNull;
 
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.FieldNamingStrategy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.hxd.root.app.Constants;
-import com.hxd.root.http.interceptor.httpparams.HttpFixedParams;
+import com.hxd.root.http.base.BaseResponse;
+import com.hxd.root.http.interceptor.HttpCacheInterceptor;
+import com.hxd.root.http.interceptor.HttpCookiesInterceptor;
+import com.hxd.root.http.interceptor.HttpHeaderInterceptor;
+import com.hxd.root.http.interceptor.ReceivedCookiesInterceptor;
 import com.hxd.root.http.interceptor.httplogger.Logger;
 import com.hxd.root.http.interceptor.httplogger.LoggerInterceptor;
-import com.hxd.root.http.interceptor.HttpCacheInterceptor;
-import com.hxd.root.http.interceptor.HttpHeaderInterceptor;
-import com.hxd.root.http.interceptor.HttpCookiesInterceptor;
-import com.hxd.root.http.interceptor.ReceivedCookiesInterceptor;
+import com.hxd.root.http.interceptor.httpparams.HttpFixedParams;
 import com.hxd.root.http.rxutils.HttpsUtils;
 import com.hxd.root.http.rxutils.ImplTokenGetListener;
-import com.hxd.root.http.rxutils.NetworkUtil;
 import com.hxd.root.http.rxutils.NullOnEmptyConverterFactory;
 import com.hxd.root.http.rxutils.ParamNames;
+import com.hxd.root.http.rxutils.ResultJsonTypeAdapter;
 import com.hxd.root.utils.DebugUtil;
 import com.hxd.root.utils.SPUtils;
 
 import java.io.File;
-import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Cache;
-import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -103,7 +99,7 @@ public class HttpUtils {
         builder.baseUrl(apiUrl);
         // 添加Gson空值转换器, 避免转换异常
         builder.addConverterFactory(new NullOnEmptyConverterFactory());
-        // 将规范的Gson解析成实体
+        // 将规范的Gson解析成实体(鉴于后台蛋疼Json,必须特殊处理)
         builder.addConverterFactory(GsonConverterFactory.create(getGson()));
         // 添加支持RxAdapter回调适配
         builder.addCallAdapterFactory(RxJava2CallAdapterFactory.create());
@@ -127,7 +123,7 @@ public class HttpUtils {
      * @return API_ROOT
      */
     private String initRootApi() {
-        return SPUtils.getString(Constants.CUSTOM_SERVER, DebugUtil.isDebug ? API_BETA : API_FORMAL);
+        return SPUtils.getString(Constants.CUSTOM_SERVER, DebugUtil.isDebug() ? API_BETA : API_FORMAL);
     }
 
     /**
@@ -159,10 +155,14 @@ public class HttpUtils {
 
     /**
      * Gson配置
+     * 后台Json格式不规范，必须特别处理
      */
     private Gson getGson() {
         if (gson == null) {
             GsonBuilder builder = new GsonBuilder();
+            // 避免后台不规范的蛋疼Json格式
+            builder.registerTypeHierarchyAdapter(BaseResponse.class, new ResultJsonTypeAdapter());
+            // 规范Json处理
             builder.setLenient();
             builder.setFieldNamingStrategy(new AnnotateNaming());
             builder.serializeNulls();
@@ -245,7 +245,7 @@ public class HttpUtils {
         // 自定义网络请求Json日志输出形式
         Logger httpLogger = new Logger();
         LoggerInterceptor logInterceptor = new LoggerInterceptor(httpLogger);
-        if (DebugUtil.isDebug) {
+        if (DebugUtil.isDebug()) {
             logInterceptor.setLevel(LoggerInterceptor.Level.BODY); // 测试
         } else {
             logInterceptor.setLevel(LoggerInterceptor.Level.NONE); // 打包
@@ -254,36 +254,10 @@ public class HttpUtils {
     }
 
     /**
-     * 缓存拦截器，需要有缓存文件
-     * <p>
-     * 离线读取本地缓存，在线获取最新数据
+     * 设置Token监听
+     *
+     * @param listener
      */
-    private class CacheInterceptor implements Interceptor {
-        @Override
-        public Response intercept(@NonNull Chain chain) throws IOException {
-            // 获取原先的请求
-            Request request = chain.request();
-            // 可添加token验证, 可用链式结构
-            Request.Builder builder = request.newBuilder();
-            builder.addHeader("Accept", "application/json;versions=1");
-            if (NetworkUtil.isNetworkConnected(context)) {
-                int maxAge = 60;
-                builder.addHeader("Cache-Control", "public, max-age=" + maxAge);
-            } else {
-                int maxStale = 60 * 60 * 24 * 28;
-                builder.addHeader("Cache-Control", "public, only-if-cached, max-stale=" + maxStale);
-            }
-            // 可添加token
-//            if (listener != null) {
-//                builder.addHeader("token", listener.getToken());
-//            }
-            // 如有需要，添加请求头
-//            builder.addHeader("user_id", HttpFixedParams.getID());
-            builder.addHeader("a", HttpFixedParams.getHeader(request.method()));
-            return chain.proceed(builder.build());
-        }
-    }
-
     public void setTokenListener(ImplTokenGetListener listener) {
         this.listener = listener;
     }

@@ -26,6 +26,8 @@ import java.util.List;
  * @author Cazaea
  * @time 2017/6/23 17:24
  * @mail wistorm@sina.com
+ *
+ * 方案一：已弃用
  */
 public class FunctionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 

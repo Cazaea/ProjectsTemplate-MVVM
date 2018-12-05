@@ -22,7 +22,7 @@ import retrofit2.HttpException;
  * 日 期： 2018/11/29
  * 邮 箱： wistorm@sina.com
  */
-public class CustomException {
+public class ApiException {
 
     /**
      * 服务器产生的Exception

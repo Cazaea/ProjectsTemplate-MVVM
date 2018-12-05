@@ -10,7 +10,6 @@ import io.reactivex.disposables.Disposable;
  * <p>
  * 用于数据请求的回调
  */
-
 public interface RequestImpl {
 
     void loadFailed();

@@ -7,21 +7,19 @@ import android.text.TextUtils;
 
 import com.hxd.root.app.Constants;
 import com.hxd.root.base.BaseActivity;
-import com.hxd.root.bean.login.LoginBean;
 import com.hxd.root.data.UserUtil;
 import com.hxd.root.data.room.Injection;
+import com.hxd.root.data.room.User;
 import com.hxd.root.http.HttpClient;
+import com.hxd.root.http.base.BaseSubscriber;
+import com.hxd.root.http.exception.ResponseThrowable;
+import com.hxd.root.http.rxutils.RxUtils;
 import com.hxd.root.utils.ToastUtil;
 import com.thejoyrun.router.Router;
 
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
-
 /**
  * @author Cazaea
- * @data 2018/5/7
+ * @date 2018/5/7
  * @Description
  */
 
@@ -51,52 +49,22 @@ public class LoginViewModel extends ViewModel {
         }
         HttpClient.Builder.getBaseServer()
                 .login(account.get(), password.get())
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<LoginBean>() {
+                .compose(RxUtils.schedulersTransformer())
+                .compose(RxUtils.exceptionTransformer())
+                .subscribe(new BaseSubscriber<User>(activity) {
                     @Override
-                    public void onSubscribe(Disposable d) {
-
+                    public void onError(ResponseThrowable e) {
+                        ToastUtil.showShort(e.getMessage());
                     }
 
                     @Override
-                    public void onNext(LoginBean bean) {
-                        if (bean != null && bean.getData() != null && bean.getCode() == 1000) {
-                            Injection.get().addData(bean.getData());
-                            UserUtil.handleLoginSuccess();
-                            navigator.loadSuccess();
-                        } else {
-                            if (bean != null) {
-                                ToastUtil.showLong(bean.getMsg());
-                            }
-                        }
-
+                    public void onResult(User pUser) {
+                        Injection.get().addData(pUser);
+                        UserUtil.handleLoginSuccess();
+                        navigator.loadSuccess();
                     }
 
-                    @Override
-                    public void onError(Throwable e) {
-//                        ToastUtil.showShort(e.getMessage());
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
                 });
-//                .subscribe(new BaseSubscriber<LoginBean>(activity) {
-//                    @Override
-//                    public void onError(ResponseThrowable e) {
-//                        ToastUtil.showShort(e.getCode()+e.getMessage());
-//                    }
-//
-//                    @Override
-//                    public void onResult(LoginBean bean) {
-//                        Injection.get().addData(bean.getData());
-//                        UserUtil.handleLoginSuccess();
-//                        navigator.loadSuccess();
-//                    }
-//
-//                });
     }
 
     /**

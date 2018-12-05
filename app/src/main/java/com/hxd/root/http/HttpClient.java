@@ -2,18 +2,18 @@ package com.hxd.root.http;
 
 import com.hxd.root.bean.CommonBean;
 import com.hxd.root.bean.ConfigBean;
+import com.hxd.root.bean.UpdateBean;
 import com.hxd.root.bean.home.HomeInfoBean;
 import com.hxd.root.bean.lease.LeaseBean;
-import com.hxd.root.bean.mine.PayFrontBean;
 import com.hxd.root.bean.login.RegisterBean;
-import com.hxd.root.bean.UpdateBean;
+import com.hxd.root.bean.mine.PayFrontBean;
 import com.hxd.root.bean.product.ProductBean;
 import com.hxd.root.bean.product.buy.ProductInfoBean;
 import com.hxd.root.bean.product.pay.OrderInfoBean;
 import com.hxd.root.bean.product.pay.PayChannelBean;
 import com.hxd.root.bean.product.pay.PayInfoBean;
-import com.hxd.root.bean.login.LoginBean;
 import com.hxd.root.data.room.User;
+import com.hxd.root.http.base.BaseResponse;
 
 import io.reactivex.Observable;
 import retrofit2.http.Field;
@@ -90,7 +90,7 @@ public interface HttpClient {
      */
     @FormUrlEncoded
     @POST("/app/login/check")
-    Observable<LoginBean> login(@Field("account") String account, @Field("password") String password);
+    Observable<BaseResponse<User>> login(@Field("account") String account, @Field("password") String password);
 
     /**
      * 注册

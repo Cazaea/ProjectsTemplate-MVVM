@@ -4,7 +4,8 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 
 import com.hxd.root.http.base.BaseResponse;
-import com.hxd.root.http.exception.CustomException;
+import com.hxd.root.http.exception.ApiException;
+import com.hxd.root.http.exception.ResponseThrowable;
 import com.trello.rxlifecycle2.LifecycleProvider;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 
@@ -24,9 +25,12 @@ import io.reactivex.schedulers.Schedulers;
  * 有关Rx的工具类
  */
 public class RxUtils {
+
+    //=====================================================================================
+    //======================================生命周期绑定=======================================
+    //=====================================================================================
+
     /**
-     * 生命周期绑定
-     *
      * @param lifecycle Activity
      */
     public static LifecycleTransformer bindToLifecycle(@NonNull Context lifecycle) {
@@ -38,11 +42,9 @@ public class RxUtils {
     }
 
     /**
-     * 生命周期绑定
-     *
      * @param lifecycle Fragment
      */
-    public static <T> LifecycleTransformer bindToLifecycle(@NonNull Fragment lifecycle) {
+    public static LifecycleTransformer bindToLifecycle(@NonNull Fragment lifecycle) {
         if (lifecycle instanceof LifecycleProvider) {
             return ((LifecycleProvider) lifecycle).bindToLifecycle();
         } else {
@@ -51,13 +53,15 @@ public class RxUtils {
     }
 
     /**
-     * 生命周期绑定
-     *
-     * @param lifecycle Fragment
+     * @param lifecycle LifecycleProvider
      */
-    public static <T> LifecycleTransformer bindToLifecycle(@NonNull LifecycleProvider lifecycle) {
+    public static LifecycleTransformer bindToLifecycle(@NonNull LifecycleProvider lifecycle) {
         return lifecycle.bindToLifecycle();
     }
+
+    //=====================================================================================
+    //======================================线程调度==========================================
+    //=====================================================================================
 
     /**
      * 简化线程调度器
@@ -67,44 +71,87 @@ public class RxUtils {
                 .observeOn(AndroidSchedulers.mainThread());
     }
 
+    //=====================================================================================
+    //======================================异常捕获==========================================
+    //=====================================================================================
 
-    public static <T> ObservableTransformer exceptionTransformer() {
-
-        return new ObservableTransformer() {
-            @Override
-            public ObservableSource apply(Observable observable) {
-                return observable
-                        .map(new ResponseFunction<T>())  //这里可以取出BaseResponse中的Result
-                        .onErrorResumeNext(new ErrorResumeFunction());
-            }
-        };
+    /**
+     * 网络错误的异常转换
+     */
+    public static <T> ObservableTransformer<BaseResponse<T>, T> exceptionTransformer() {
+        return upstream -> upstream
+                .onErrorResumeNext(new ErrorResumeFunction<>())
+                .flatMap(new ResponseFunction<T>());
     }
 
-    private static class ErrorResumeFunction<T> implements Function<Throwable, Observable<? extends BaseResponse<T>>> {
+    /**
+     * 非服务器产生的异常，比如本地无无网络请求，Json数据解析错误等等。
+     */
+    private static class ErrorResumeFunction<T> implements Function<Throwable, ObservableSource<? extends BaseResponse<T>>> {
+
         @Override
-        public Observable<? extends BaseResponse<T>> apply(Throwable t) {
-            return Observable.error(CustomException.handleException(t));
+        public ObservableSource<? extends BaseResponse<T>> apply(Throwable throwable) throws Exception {
+            return Observable.error(ApiException.handleException(throwable));
         }
     }
 
     /**
      * 服务器返回的数据解析
      * 正常服务器返回数据和服务器可能返回的exception
-     *
-     * @param <T>
      */
-    private static class ResponseFunction<T> implements Function<BaseResponse<T>, T> {
+    private static class ResponseFunction<T> implements Function<BaseResponse<T>, ObservableSource<T>> {
 
         @Override
-        public T apply(BaseResponse<T> tResponse) throws Exception {
+        public ObservableSource<T> apply(BaseResponse<T> tResponse) throws Exception {
             int code = tResponse.getCode();
             String message = tResponse.getMsg();
             if (tResponse.isOk()) {
-                return tResponse.getResult();
+                return Observable.just(tResponse.getData());
             } else {
-                throw new RuntimeException(!"".equals(tResponse.getCode() + "" + tResponse.getMsg()) ? tResponse.getMsg() : "");
+                return Observable.error(new ResponseThrowable(code, message));
             }
         }
     }
+
+    //=====================================================================================
+    //======================================旧版弃用==========================================
+    //=====================================================================================
+
+//    public static <T> ObservableTransformer<BaseResponse<T>, T> exceptionTransformer() {
+//
+//        return new ObservableTransformer<BaseResponse<T>, T>() {
+//            @Override
+//            public ObservableSource<T> apply(Observable observable) {
+//                return observable
+//                        .map(new ResponseFunction<T>())  //这里可以取出BaseResponse中的Result
+//                        .onErrorResumeNext(new ErrorResumeFunction<>());
+//            }
+//        };
+//    }
+//
+//    private static class ErrorResumeFunction<T> implements Function<Throwable, ObservableSource<BaseResponse<T>>> {
+//        @Override
+//        public ObservableSource<BaseResponse<T>> apply(Throwable t) {
+//            return Observable.error(ApiException.handleException(t));
+//        }
+//    }
+//
+//    /**
+//     * 服务器返回的数据解析
+//     * 正常服务器返回数据和服务器可能返回的exception
+//     *
+//     * @param <T>
+//     */
+//    private static class ResponseFunction<T> implements Function<BaseResponse<T>, T> {
+//
+//        @Override
+//        public T apply(BaseResponse<T> tResponse) throws Exception {
+//            if (tResponse.isOk()) {
+//                return tResponse.getData();
+//            } else {
+//                throw new RuntimeException(!"".equals(tResponse.getCode() + "" + tResponse.getMsg()) ? tResponse.getMsg() : "");
+//            }
+//        }
+//    }
 
 }

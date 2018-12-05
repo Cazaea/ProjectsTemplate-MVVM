@@ -13,8 +13,8 @@ import io.reactivex.Flowable;
 
 /**
  * @author Cazaea
- * @Description Data Access Object for the User table.
  * @date 2018/3/13
+ * @Description Data Access Object for the User table.
  */
 @Dao
 public interface UserDao {

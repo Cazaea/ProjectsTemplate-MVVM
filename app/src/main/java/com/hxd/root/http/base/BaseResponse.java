@@ -6,8 +6,13 @@ package com.hxd.root.http.base;
  */
 public class BaseResponse<T> {
 
+    /**
+     * code : 1000
+     * msg : XX成功
+     * data : {}/[]
+     */
+    private T data;     // 具体的数据结果
     private int code;   // 返回的code
-    private T result;   // 具体的数据结果
     private String msg; // 返回接口的说明
 
     public boolean isOk() {
@@ -22,14 +27,6 @@ public class BaseResponse<T> {
         this.code = code;
     }
 
-    public T getResult() {
-        return result;
-    }
-
-    public void setResult(T result) {
-        this.result = result;
-    }
-
     public String getMsg() {
         return msg;
     }
@@ -37,4 +34,13 @@ public class BaseResponse<T> {
     public void setMsg(String msg) {
         this.msg = msg;
     }
+
+    public T getData() {
+        return data;
+    }
+
+    public void setData( T data) {
+        this.data = data;
+    }
+
 }

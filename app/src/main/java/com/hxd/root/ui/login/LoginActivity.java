@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.IntegerRes;
 import android.view.View;
 
 import com.hxd.root.R;
@@ -14,7 +13,6 @@ import com.hxd.root.databinding.ActivityLoginBinding;
 import com.hxd.root.utils.BaseTools;
 import com.hxd.root.utils.CommonUtils;
 import com.hxd.root.utils.DebugUtil;
-import com.hxd.root.view.LongPressView;
 import com.hxd.root.vmodel.login.LoginNavigator;
 import com.hxd.root.vmodel.login.LoginViewModel;
 import com.thejoyrun.router.Router;
@@ -45,6 +43,17 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding> implements
         refreshDevelopStatus();
     }
 
+    @SuppressLint("SetTextI18n")
+    public void refreshDevelopStatus() {
+        if (DebugUtil.isDebug()) {
+            bindingView.tvVersion.setText(CommonUtils.getString(R.string.string_developer_mode_on, "Version:" + BaseTools.getVersionName()));
+            bindingView.tvVersion.setSingleClickListener(() -> Router.startActivity(LoginActivity.this, Constants.ROUTER_TOTAL_HEAD + "develop"));
+        } else {
+            bindingView.tvVersion.setText("Version:" + BaseTools.getVersionName());
+            bindingView.tvVersion.setLongPressListener(() -> Router.startActivity(LoginActivity.this, Constants.ROUTER_TOTAL_HEAD + "develop"));
+        }
+    }
+
     public void login(View view) {
         viewModel.login();
     }
@@ -57,17 +66,6 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding> implements
         viewModel.goRecover();
     }
 
-    @SuppressLint("SetTextI18n")
-    public void refreshDevelopStatus() {
-        if (DebugUtil.isDebug) {
-            bindingView.tvVersion.setText(CommonUtils.getString(R.string.string_developer_mode_on, "Version:" + BaseTools.getVersionName()));
-            bindingView.tvVersion.setSingleClickListener(() -> Router.startActivity(LoginActivity.this, Constants.ROUTER_TOTAL_HEAD + "develop"));
-        } else {
-            bindingView.tvVersion.setText("Version:" + BaseTools.getVersionName());
-            bindingView.tvVersion.setLongPressListener(() -> Router.startActivity(LoginActivity.this, Constants.ROUTER_TOTAL_HEAD + "develop"));
-        }
-    }
-
     /**
      * 注册或登录成功
      */
@@ -78,8 +76,6 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding> implements
 
     /**
      * 进入页面
-     *
-     * @param mContext
      */
     public static void start(Context mContext) {
         Intent intent = new Intent(mContext, LoginActivity.class);

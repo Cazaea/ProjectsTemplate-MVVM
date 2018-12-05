@@ -9,7 +9,6 @@ import com.hxd.root.R;
 import com.hxd.root.app.Constants;
 import com.hxd.root.base.BaseActivity;
 import com.hxd.root.databinding.ActivityDevelopBinding;
-import com.hxd.root.utils.DebugUtil;
 import com.hxd.root.utils.SPUtils;
 import com.hxd.root.vmodel.other.DevelopViewModel;
 import com.thejoyrun.router.RouterActivity;
@@ -31,7 +30,9 @@ public class DevelopActivity extends BaseActivity<ActivityDevelopBinding> implem
         bindingView.setDevelop(viewModel);
         // 监听Switch按钮
         bindingView.switch1.setOnCheckedChangeListener(this);
-        bindingView.switch1.setChecked(DebugUtil.isDebug);
+        // 是否已开启开发者模式
+        boolean isDebug = SPUtils.getBoolean(Constants.IS_DEBUG,false);
+        bindingView.switch1.setChecked(isDebug);
     }
 
     public void selectBeta(View view) {
@@ -55,19 +56,9 @@ public class DevelopActivity extends BaseActivity<ActivityDevelopBinding> implem
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         // 更新数据
-        DebugUtil.isDebug = isChecked;
+        SPUtils.putBoolean(Constants.IS_DEBUG, isChecked);
         // 分情况处理
-        if (isChecked) {
-            bindingView.llAllConfig.setVisibility(View.VISIBLE);
-        } else {
-            bindingView.llAllConfig.setVisibility(View.GONE);
-        }
-    }
-
-    @Override
-    public void onDestroy() {
-        SPUtils.putBoolean(Constants.IS_DEBUG, DebugUtil.isDebug);
-        super.onDestroy();
+        bindingView.llAllConfig.setVisibility(isChecked ? View.VISIBLE : View.GONE);
     }
 
 }

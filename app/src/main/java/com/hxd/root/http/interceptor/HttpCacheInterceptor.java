@@ -37,7 +37,7 @@ public class HttpCacheInterceptor implements Interceptor {
         // 自定义 缓存超时
         CacheControl.Builder cacheBuilder = new CacheControl.Builder();
         cacheBuilder.maxAge(0, TimeUnit.SECONDS);
-        cacheBuilder.maxStale(365, TimeUnit.DAYS);
+        cacheBuilder.maxStale(7, TimeUnit.DAYS);
         CacheControl cacheControl = cacheBuilder.build();
 
         if (NetworkUtil.isNetworkConnected(context)) {
@@ -69,6 +69,14 @@ public class HttpCacheInterceptor implements Interceptor {
                     .header("Cache-Control", "public, only-if-cached, max-stale=" + maxStale)
                     .build();
         }
+
+        // 可添加token
+//            if (listener != null) {
+//                builder.addHeader("token", listener.getToken());
+//            }
+        // 如有需要，添加请求头
+//            builder.addHeader("user_id", HttpFixedParams.getID());
+//        builder.addHeader("a", HttpFixedParams.getHeader(request.method()));
 
         return originalResponse;
     }
