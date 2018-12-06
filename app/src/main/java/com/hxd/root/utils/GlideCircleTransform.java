@@ -22,7 +22,7 @@ public class GlideCircleTransform extends BitmapTransformation {
     }
 
     @Override
-    protected Bitmap transform(BitmapPool pool, Bitmap toTransform, int outWidth, int outHeight) {
+    protected Bitmap transform(@NonNull BitmapPool pool, @NonNull Bitmap toTransform, int outWidth, int outHeight) {
         return circleCrop(pool, toTransform);
     }
 

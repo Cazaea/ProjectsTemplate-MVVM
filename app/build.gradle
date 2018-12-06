@@ -109,27 +109,27 @@ dependencies {
     implementation rootProject.ext.support["multidex"]
     implementation rootProject.ext.support["kotlin-jdk7"]
 
-    // rxJava
+    // RxJava
     implementation rootProject.ext.dependencies["rxjava"]
     implementation rootProject.ext.dependencies["rxandroid"]
 
-    // rx管理View的生命周期
+    // Rx管理View的生命周期
     implementation rootProject.ext.dependencies["rxlifecycle"]
     implementation rootProject.ext.dependencies["rxlifecycle-components"]
 
-    // rxBinding
+    // RxBinding
     implementation rootProject.ext.dependencies["rxbinding"]
 
-    // rx权限请求
+    // Rx权限请求
     implementation rootProject.ext.dependencies["rxpermissions"]
 
-    // network
+    // Network
     implementation rootProject.ext.dependencies["okhttp"]
     implementation rootProject.ext.dependencies["retrofit"]
     implementation rootProject.ext.dependencies["converter-gson"]
     implementation rootProject.ext.dependencies["adapter-rxjava"]
 
-    // material-dialogs
+    // Material-Dialogs
     implementation(rootProject.ext.dependencies["material-dialogs-core"]) {
         exclude group: 'com.android.support'
     }
@@ -137,38 +137,38 @@ dependencies {
         exclude group: 'com.android.support'
     }
 
-    // glide图片加载库
+    // Glide图片加载库
     implementation rootProject.ext.dependencies["glide"]
     annotationProcessor rootProject.ext.dependencies["glide-compiler"]
     implementation rootProject.ext.dependencies["glide-transformations"]
 
-    // json解析
+    // Json解析
     implementation rootProject.ext.dependencies["gson"]
 
     // Google LiveData和ViewModel组件
     implementation rootProject.ext.dependencies["lifecycle-extensions"]
     annotationProcessor rootProject.ext.dependencies["lifecycle-compiler"]
-    implementation rootProject.ext.dependencies["lifecycle-reactivestreams"]
+//    implementation rootProject.ext.dependencies["lifecycle-reactivestreams"]
 
-    // room  A powerful SQLite object mapping library
+    // Room  A powerful SQLite object mapping library
     implementation rootProject.ext.dependencies["room-runtime"]
     annotationProcessor rootProject.ext.dependencies["room-compiler"]
     implementation rootProject.ext.dependencies["room-rxjava"]
     implementation rootProject.ext.dependencies["paging-runtime"]
 
-    // zxing二维码
+    // Zxing二维码
     implementation rootProject.ext.dependencies["zxing"]
 
-    // logger
+    // Logger
     implementation rootProject.ext.dependencies["logger"]
 
     // 蜂窝动画
     implementation rootProject.ext.dependencies["nineoldandroids"]
 
-    // banner轮播图
+    // Banner轮播图
     implementation rootProject.ext.dependencies["banner"]
 
-    // slider
+    // Slider
     implementation rootProject.ext.dependencies["slider"]
 
     // BottomSheet
@@ -183,7 +183,7 @@ dependencies {
     implementation rootProject.ext.dependencies["crash-report"]
     implementation rootProject.ext.dependencies["native-crash-report"]
 
-    // router
+    // Router
     implementation rootProject.ext.dependencies["router"]
     annotationProcessor rootProject.ext.dependencies["router-compiler"]
     implementation files('libs/commons-lang-2.6.jar')

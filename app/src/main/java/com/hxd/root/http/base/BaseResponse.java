@@ -15,7 +15,7 @@ public class BaseResponse<T> {
     private int code;   // 返回的code
     private String msg; // 返回接口的说明
 
-    public boolean isOk() {
+    public boolean isSuccess() {
         return code == 1000;
     }
 

@@ -5,8 +5,6 @@ import android.databinding.BindingAdapter;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestOptions;
 import com.hxd.root.R;
@@ -72,7 +70,7 @@ public class ImgLoadUtil {
                 .asBitmap()
                 .load(url)
                 .apply(RequestOptions.placeholderOf(R.drawable.img_one_bi_one)
-                        .error(R.drawable.img_one_bi_one)
+                                .error(R.drawable.img_one_bi_one)
 //                        .skipMemoryCache(true)                              //跳过内存缓存
 //                        .diskCacheStrategy(DiskCacheStrategy.RESOURCE)      // 缓存图片源文件（解决加载gif内存溢出问题）
                 )

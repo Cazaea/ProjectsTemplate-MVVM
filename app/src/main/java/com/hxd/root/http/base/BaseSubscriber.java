@@ -47,7 +47,7 @@ public abstract class BaseSubscriber<T> extends DisposableObserver<T> {
     @Override
     public void onComplete() {
         // TODO some common as  dismiss loading
-//        ToastUtil.showShort("http is Complete");
+        // ToastUtil.showShort("http is Complete");
 
     }
 

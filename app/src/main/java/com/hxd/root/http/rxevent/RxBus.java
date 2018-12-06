@@ -17,8 +17,8 @@ public class RxBus {
      * http://www.loongwind.com/archives/264.html
      * https://theseyears.gitbooks.io/android-architecture-journey/content/rxbus.html
      */
-    private static volatile RxBus mDefaultInstance;
     private final Subject<Object> mBus;
+    private static volatile RxBus mDefaultInstance;
     private final Map<Class<?>, Object> mStickyEventMap;
 
     private RxBus() {
@@ -108,21 +108,6 @@ public class RxBus {
     }
 
     /**
-     * 根据传递的 eventType 类型返回特定类型(eventType)的 被观察者
-     */
-    public <T> Observable<T> toObservableSticky(final Class<T> eventType) {
-        synchronized (mStickyEventMap) {
-            Observable<T> observable = mBus.ofType(eventType);
-            final Object event = mStickyEventMap.get(eventType);
-            if (event != null) {
-                return Observable.merge(observable, Observable.create(emitter -> emitter.onNext(eventType.cast(event))));
-            } else {
-                return observable;
-            }
-        }
-    }
-
-    /**
      * 根据eventType获取Sticky事件
      */
     public <T> T getStickyEvent(Class<T> eventType) {
@@ -149,5 +134,19 @@ public class RxBus {
         }
     }
 
+    /**
+     * 根据传递的 eventType 类型返回特定类型(eventType)的 被观察者
+     */
+    public <T> Observable<T> toObservableSticky(final Class<T> eventType) {
+        synchronized (mStickyEventMap) {
+            Observable<T> observable = mBus.ofType(eventType);
+            final Object event = mStickyEventMap.get(eventType);
+            if (event != null) {
+                return Observable.merge(observable, Observable.create(emitter -> emitter.onNext(eventType.cast(event))));
+            } else {
+                return observable;
+            }
+        }
+    }
 
 }

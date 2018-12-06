@@ -7,12 +7,9 @@ public class RxBusObject {
     private int code;
     private Object object;
 
-    public RxBusObject(int code, Object object) {
+    private RxBusObject(int code, Object object) {
         this.code = code;
         this.object = object;
-    }
-
-    public RxBusObject() {
     }
 
     public int getCode() {
@@ -31,7 +28,7 @@ public class RxBusObject {
         object = pObject;
     }
 
-    public static RxBusObject newInstance(int code, Object object) {
+    static RxBusObject newInstance(int code, Object object) {
         return new RxBusObject(code, object);
     }
 }

@@ -20,7 +20,7 @@ import com.hxd.root.http.rxutils.HttpsUtils;
 import com.hxd.root.http.rxutils.ImplTokenGetListener;
 import com.hxd.root.http.rxutils.NullOnEmptyConverterFactory;
 import com.hxd.root.http.rxutils.ParamNames;
-import com.hxd.root.http.rxutils.ResultJsonTypeAdapter;
+import com.hxd.root.http.rxutils.ResultDeserialize;
 import com.hxd.root.utils.DebugUtil;
 import com.hxd.root.utils.SPUtils;
 
@@ -161,7 +161,7 @@ public class HttpUtils {
         if (gson == null) {
             GsonBuilder builder = new GsonBuilder();
             // 避免后台不规范的蛋疼Json格式
-            builder.registerTypeHierarchyAdapter(BaseResponse.class, new ResultJsonTypeAdapter());
+            builder.registerTypeHierarchyAdapter(BaseResponse.class, new ResultDeserialize());
             // 规范Json处理
             builder.setLenient();
             builder.setFieldNamingStrategy(new AnnotateNaming());

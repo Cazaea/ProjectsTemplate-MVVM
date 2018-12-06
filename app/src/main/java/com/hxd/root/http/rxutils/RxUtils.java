@@ -105,53 +105,12 @@ public class RxUtils {
         public ObservableSource<T> apply(BaseResponse<T> tResponse) throws Exception {
             int code = tResponse.getCode();
             String message = tResponse.getMsg();
-            if (tResponse.isOk()) {
+            if (tResponse.isSuccess()) {
                 return Observable.just(tResponse.getData());
             } else {
                 return Observable.error(new ResponseThrowable(code, message));
             }
         }
     }
-
-    //=====================================================================================
-    //======================================旧版弃用==========================================
-    //=====================================================================================
-
-//    public static <T> ObservableTransformer<BaseResponse<T>, T> exceptionTransformer() {
-//
-//        return new ObservableTransformer<BaseResponse<T>, T>() {
-//            @Override
-//            public ObservableSource<T> apply(Observable observable) {
-//                return observable
-//                        .map(new ResponseFunction<T>())  //这里可以取出BaseResponse中的Result
-//                        .onErrorResumeNext(new ErrorResumeFunction<>());
-//            }
-//        };
-//    }
-//
-//    private static class ErrorResumeFunction<T> implements Function<Throwable, ObservableSource<BaseResponse<T>>> {
-//        @Override
-//        public ObservableSource<BaseResponse<T>> apply(Throwable t) {
-//            return Observable.error(ApiException.handleException(t));
-//        }
-//    }
-//
-//    /**
-//     * 服务器返回的数据解析
-//     * 正常服务器返回数据和服务器可能返回的exception
-//     *
-//     * @param <T>
-//     */
-//    private static class ResponseFunction<T> implements Function<BaseResponse<T>, T> {
-//
-//        @Override
-//        public T apply(BaseResponse<T> tResponse) throws Exception {
-//            if (tResponse.isOk()) {
-//                return tResponse.getData();
-//            } else {
-//                throw new RuntimeException(!"".equals(tResponse.getCode() + "" + tResponse.getMsg()) ? tResponse.getMsg() : "");
-//            }
-//        }
-//    }
 
 }
