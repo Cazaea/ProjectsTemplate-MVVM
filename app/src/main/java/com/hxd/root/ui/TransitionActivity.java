@@ -8,18 +8,13 @@ import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.bumptech.glide.Glide;
-
-import java.lang.ref.WeakReference;
-import java.util.Random;
-
-import com.bumptech.glide.request.RequestOptions;
 import com.hxd.root.MainActivity;
 import com.hxd.root.R;
-import com.hxd.root.app.ConstantsImageUrl;
 import com.hxd.root.databinding.ActivityTransitionBinding;
 import com.hxd.root.utils.CommonUtils;
 import com.hxd.root.utils.PerfectClickListener;
+
+import java.lang.ref.WeakReference;
 
 /**
  * 过渡页面（启动页面）
@@ -46,15 +41,16 @@ public class TransitionActivity extends AppCompatActivity {
     }
 
     private void showImage() {
-        int i = new Random().nextInt(ConstantsImageUrl.TRANSITION_URLS.length);
+
         // 先显示默认图
         mBinding.ivDefaultPic.setImageDrawable(CommonUtils.getDrawable(R.drawable.img_transition_default));
         // 加载网路图片
-        Glide.with(this)
-                .load(ConstantsImageUrl.TRANSITION_URLS[i])
-                .apply(RequestOptions.placeholderOf(R.drawable.img_transition_default)
-                .error(R.drawable.img_transition_default))
-                .into(mBinding.ivPic);
+//        int i = new Random().nextInt(ConstantsImageUrl.TRANSITION_URLS.length);
+//        Glide.with(this)
+//                .load(ConstantsImageUrl.TRANSITION_URLS[i])
+//                .apply(RequestOptions.placeholderOf(R.drawable.img_transition_default)
+//                .error(R.drawable.img_transition_default))
+//                .into(mBinding.ivPic);
         // 跳过
         mBinding.tvJump.setOnClickListener(new PerfectClickListener() {
             @Override
@@ -64,8 +60,9 @@ public class TransitionActivity extends AppCompatActivity {
         });
 
         handler = new MyHandler(this);
-        handler.sendEmptyMessageDelayed(0, 1500);
-        handler.sendEmptyMessageDelayed(1, 3500);
+        handler.sendEmptyMessageDelayed(1, 1000);
+//        handler.sendEmptyMessageDelayed(0, 1500);
+//        handler.sendEmptyMessageDelayed(1, 3500);
     }
 
     static class MyHandler extends Handler {

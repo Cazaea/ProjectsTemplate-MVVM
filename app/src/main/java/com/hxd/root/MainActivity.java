@@ -180,7 +180,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                            ArticleListActivity.start(MainActivity.this);
                         }
                         break;
-                    case R.id.ll_nav_login:         // 玩安卓登录
+                    case R.id.ll_nav_login:         // 账号登录
                         DialogBuild.showItems(v, new OnLoginListener() {
                             @Override
                             public void loginMain() {
@@ -207,15 +207,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 // 开启菜单
                 drawerLayout.openDrawer(GravityCompat.START);
                 break;
+            case R.id.iv_title_one:
+                if (vpContent.getCurrentItem() != 0) {
+                    setCurrentItem(0);
+                }
+                break;
             case R.id.iv_title_two:
                 // 不然cpu会有损耗
                 if (vpContent.getCurrentItem() != 1) {
                     setCurrentItem(1);
-                }
-                break;
-            case R.id.iv_title_one:
-                if (vpContent.getCurrentItem() != 0) {
-                    setCurrentItem(0);
                 }
                 break;
             case R.id.iv_title_three:

@@ -21,7 +21,6 @@ import com.hxd.root.bean.home.ModuleBean;
 import com.hxd.root.databinding.HeaderItemHomeBinding;
 import com.hxd.root.databinding.ItemHomeFunctionBinding;
 import com.hxd.root.databinding.ItemHomeInformationBinding;
-import com.hxd.root.utils.BaseTools;
 import com.hxd.root.utils.DensityUtil;
 import com.hxd.root.utils.DialogBuild;
 import com.hxd.root.utils.GlideImageLoader;
@@ -243,9 +242,9 @@ public class FunctionAdapter3 extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     private void showBannerView(HeaderItemHomeBinding binding, List<BannerBean> banner) {
         // 格式化控件宽高
-        DensityUtil.formatViewHeight(binding.homeBanner, BaseTools.getWindowWidth(context), (32 / 75f));
+        DensityUtil.formatViewHeight(binding.homeBanner, DensityUtil.getDisplayWidth(), (32 / 75f));
         // 外层布局格式化，添加固定高度
-        DensityUtil.formatViewHeight(binding.rlBannerParent, BaseTools.getWindowWidth(context), (32 / 75f), 20f);
+        DensityUtil.formatViewHeight(binding.rlBannerParent, DensityUtil.getDisplayWidth(), (32 / 75f), 20f);
 
         List<String> mBannerTitle = new ArrayList<>();
         List<String> mBannerImages = new ArrayList<>();

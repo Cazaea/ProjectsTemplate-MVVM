@@ -21,15 +21,13 @@ import com.hxd.root.bean.home.ModuleBean;
 import com.hxd.root.databinding.FooterItemHomeBinding;
 import com.hxd.root.databinding.FragmentHomeBinding;
 import com.hxd.root.databinding.HeaderItemHomeBinding;
-import com.hxd.root.utils.BaseTools;
 import com.hxd.root.utils.CommonUtils;
-
 import com.hxd.root.utils.DensityUtil;
 import com.hxd.root.utils.GlideImageLoader;
 import com.hxd.root.view.web.WebViewActivity;
 import com.hxd.root.vmodel.main.home.HomeNavigator.BannerNavigator;
-import com.hxd.root.vmodel.main.home.HomeNavigator.HeadLineNavigator;
 import com.hxd.root.vmodel.main.home.HomeNavigator.FunctionNavigator;
+import com.hxd.root.vmodel.main.home.HomeNavigator.HeadLineNavigator;
 import com.hxd.root.vmodel.main.home.HomeNavigator.InformationNavigator;
 import com.hxd.root.vmodel.main.home.HomeViewModel;
 
@@ -172,9 +170,9 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> implements B
     @Override
     public void showBannerView(ArrayList<String> bannerTitle, ArrayList<String> bannerImages, List<BannerBean> result) {
         // 格式化控件宽高
-        DensityUtil.formatViewHeight(mHeaderBinding.homeBanner, BaseTools.getWindowWidth(activity), (32 / 75f));
+        DensityUtil.formatViewHeight(mHeaderBinding.homeBanner, DensityUtil.getDisplayWidth(), (32 / 75f));
         // 外层布局格式化，添加固定高度
-        DensityUtil.formatViewHeight(mHeaderBinding.rlBannerParent, BaseTools.getWindowWidth(activity), (32 / 75f), 20f);
+        DensityUtil.formatViewHeight(mHeaderBinding.rlBannerParent, DensityUtil.getDisplayWidth(), (32 / 75f), 20f);
 
         mHeaderBinding.homeBanner.setVisibility(View.VISIBLE);
         mHeaderBinding.homeBanner.setBannerTitles(bannerTitle);

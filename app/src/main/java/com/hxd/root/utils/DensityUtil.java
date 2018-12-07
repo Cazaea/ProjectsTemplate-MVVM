@@ -1,19 +1,17 @@
 package com.hxd.root.utils;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.hxd.root.app.RootApplication;
 
 import java.util.Objects;
-
-import io.reactivex.annotations.NonNull;
 
 /**
  * Created by Administrator on 2015/10/19.
@@ -41,7 +39,6 @@ public class DensityUtil {
      *
      * @param pxValue
      * @param pxValue （DisplayMetrics类中属性scaledDensity）
-     * @return
      */
     public static int px2sp(Context context, float pxValue) {
         final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
@@ -144,8 +141,11 @@ public class DensityUtil {
         if (type == 1) {
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, height);
             view.setLayoutParams(lp);
-        } else {
+        } else if (type == 2) {
             RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, height);
+            view.setLayoutParams(lp);
+        } else {
+            FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, height);
             view.setLayoutParams(lp);
         }
     }
@@ -167,5 +167,41 @@ public class DensityUtil {
         view.setLayoutParams(params);
     }
 
+    @SuppressLint("ResourceType")
+    public static void formatBannerHeight(View imageView, View view) {
+        float displayWidth = getDisplayWidth();
+        float width = (2f / 3 * displayWidth);
+        float height = (2f / 3 * (displayWidth / 1.8f));
+        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams((int) width, (int) height);
+        imageView.setLayoutParams(lp);
+        imageView.setId(1);
+        RelativeLayout.LayoutParams lp2 = new RelativeLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, (int) height);
+        lp2.addRule(RelativeLayout.RIGHT_OF, 1);
+        view.setLayoutParams(lp2);
+    }
+
+    /**
+     * 得到屏幕的宽度
+     */
+    public static int getDisplayWidth() {
+        try {
+            WindowManager wm = (WindowManager) RootApplication.getInstance().getSystemService(Context.WINDOW_SERVICE);
+            return Objects.requireNonNull(wm).getDefaultDisplay().getWidth();
+        } catch (Exception e) {
+            return 1080;
+        }
+    }
+
+    /**
+     * 获得屏幕的高度
+     */
+    public static int getDisplayHeight() {
+        try {
+            WindowManager wm = (WindowManager) RootApplication.getInstance().getSystemService(Context.WINDOW_SERVICE);
+            return Objects.requireNonNull(wm).getDefaultDisplay().getHeight();
+        } catch (Exception e) {
+            return 1920;
+        }
+    }
 
 }

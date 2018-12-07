@@ -1,5 +1,6 @@
 package com.hxd.root.view.image;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -23,17 +24,15 @@ import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
+import com.hxd.root.R;
+import com.hxd.root.http.rxutils.NetworkUtil;
+import com.hxd.root.utils.PermissionHandler;
+import com.hxd.root.utils.RxSaveImage;
+import com.hxd.root.utils.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.bumptech.glide.request.target.Target;
-import com.hxd.root.R;
-
-import com.hxd.root.http.rxutils.NetworkUtil;
-
-import com.hxd.root.utils.RxSaveImage;
-import com.hxd.root.utils.ToastUtil;
 
 import i.am.lucky.zoom.PhotoView;
 import i.am.lucky.zoom.PhotoViewAttacher;
@@ -140,6 +139,9 @@ public class ViewBigImageActivity extends FragmentActivity implements OnPageChan
         tvSaveBigImage.setOnClickListener(view -> {
             if (!NetworkUtil.isNetworkConnected(view.getContext())) {
                 ToastUtil.showLong("当前网络不可用，请检查你的网络设置");
+                return;
+            }
+            if (!PermissionHandler.isHandlePermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
                 return;
             }
 
@@ -320,6 +322,12 @@ public class ViewBigImageActivity extends FragmentActivity implements OnPageChan
             imageTitles = null;
         }
         super.onDestroy();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        PermissionHandler.onRequestPermissionsResult("存储权限被拒绝，请到设置中开启", requestCode, permissions, grantResults, null);
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     /**

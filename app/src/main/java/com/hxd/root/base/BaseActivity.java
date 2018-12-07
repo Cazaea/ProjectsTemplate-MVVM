@@ -7,7 +7,6 @@ import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +19,7 @@ import com.hxd.root.databinding.ActivityBaseBinding;
 import com.hxd.root.utils.CommonUtils;
 import com.hxd.root.utils.PerfectClickListener;
 import com.hxd.root.view.statusbar.StatusBarUtil;
+import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
@@ -36,10 +36,10 @@ import io.reactivex.disposables.Disposable;
  * ░     ░ ░      ░  ░
  */
 @SuppressLint("Registered")
-public class BaseActivity<SV extends ViewDataBinding> extends AppCompatActivity {
+public class BaseActivity<V extends ViewDataBinding> extends RxAppCompatActivity {
 
     // 布局View
-    protected SV bindingView;
+    protected V bindingView;
     private View refresh;
     private View loadingView;
     private ActivityBaseBinding mBaseBinding;

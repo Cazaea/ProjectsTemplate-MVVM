@@ -22,7 +22,7 @@ android {
         multiDexEnabled true
         ndk {
             // Select the corresponding library of the corresponding cpu type to be added
-            abiFilters 'armeabi','armeabi-v7a', "x86"
+            abiFilters 'armeabi', 'armeabi-v7a', "x86"
         }
     }
 
@@ -92,13 +92,10 @@ dependencies {
 
     // Test
     testImplementation rootProject.ext.support["junit"]
-
     // Package
-
     //    implementation project(path: ':library:http')
     implementation project(path: ':library:zoom')
     implementation project(path: ':library:recycler')
-
     // Android Support
     implementation rootProject.ext.support["design"]
     implementation rootProject.ext.support["support-v4"]
@@ -108,27 +105,21 @@ dependencies {
     implementation rootProject.ext.support["support-annotations"]
     implementation rootProject.ext.support["multidex"]
     implementation rootProject.ext.support["kotlin-jdk7"]
-
     // RxJava
     implementation rootProject.ext.dependencies["rxjava"]
     implementation rootProject.ext.dependencies["rxandroid"]
-
     // Rx管理View的生命周期
     implementation rootProject.ext.dependencies["rxlifecycle"]
     implementation rootProject.ext.dependencies["rxlifecycle-components"]
-
     // RxBinding
     implementation rootProject.ext.dependencies["rxbinding"]
-
     // Rx权限请求
     implementation rootProject.ext.dependencies["rxpermissions"]
-
     // Network
     implementation rootProject.ext.dependencies["okhttp"]
     implementation rootProject.ext.dependencies["retrofit"]
     implementation rootProject.ext.dependencies["converter-gson"]
     implementation rootProject.ext.dependencies["adapter-rxjava"]
-
     // Material-Dialogs
     implementation(rootProject.ext.dependencies["material-dialogs-core"]) {
         exclude group: 'com.android.support'
@@ -136,53 +127,40 @@ dependencies {
     implementation(rootProject.ext.dependencies["material-dialogs-commons"]) {
         exclude group: 'com.android.support'
     }
-
     // Glide图片加载库
     implementation rootProject.ext.dependencies["glide"]
     annotationProcessor rootProject.ext.dependencies["glide-compiler"]
     implementation rootProject.ext.dependencies["glide-transformations"]
-
     // Json解析
     implementation rootProject.ext.dependencies["gson"]
-
     // Google LiveData和ViewModel组件
     implementation rootProject.ext.dependencies["lifecycle-extensions"]
     annotationProcessor rootProject.ext.dependencies["lifecycle-compiler"]
 //    implementation rootProject.ext.dependencies["lifecycle-reactivestreams"]
-
     // Room  A powerful SQLite object mapping library
     implementation rootProject.ext.dependencies["room-runtime"]
     annotationProcessor rootProject.ext.dependencies["room-compiler"]
     implementation rootProject.ext.dependencies["room-rxjava"]
     implementation rootProject.ext.dependencies["paging-runtime"]
-
     // Zxing二维码
     implementation rootProject.ext.dependencies["zxing"]
-
     // Logger
     implementation rootProject.ext.dependencies["logger"]
-
     // 蜂窝动画
     implementation rootProject.ext.dependencies["nineoldandroids"]
-
     // Banner轮播图
     implementation rootProject.ext.dependencies["banner"]
-
     // Slider
     implementation rootProject.ext.dependencies["slider"]
-
     // BottomSheet
     implementation rootProject.ext.dependencies["bottomsheet"]
-
     // LeakCanary
     debugImplementation rootProject.ext.dependencies["leakcanary-android"]
     debugImplementation rootProject.ext.dependencies["leakcanary-support-fragment"]
     releaseImplementation rootProject.ext.dependencies["leakcanary-android-no-op"]
-
     // Bugly
     implementation rootProject.ext.dependencies["crash-report"]
     implementation rootProject.ext.dependencies["native-crash-report"]
-
     // Router
     implementation rootProject.ext.dependencies["router"]
     annotationProcessor rootProject.ext.dependencies["router-compiler"]

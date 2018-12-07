@@ -62,6 +62,9 @@ public class UserUtil {
         SPUtils.putBoolean(Constants.IS_LOGIN, true);
     }
 
+    /**
+     * 清除用户数据
+     */
     public static void handleLoginFailure() {
         SPUtils.putBoolean(Constants.IS_LOGIN, false);
         SPUtils.remove("cookie");

@@ -2,7 +2,6 @@ package com.hxd.root.utils;
 
 import android.annotation.SuppressLint;
 import android.app.ActivityManager;
-import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
@@ -14,14 +13,14 @@ import android.util.DisplayMetrics;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import com.hxd.root.app.RootApplication;
+
 import java.lang.reflect.Field;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
-
-import com.hxd.root.app.RootApplication;
 
 /**
  * Created by Cazaea on 2017/2/13.
@@ -40,10 +39,9 @@ public class BaseTools {
     /**
      * 获得屏幕的宽度
      */
-    public static int getWindowWidth(Context context) {
+    public static int getWindowWidth() {
         // 获取屏幕分辨率
-        WindowManager wm = (WindowManager) (context
-                .getSystemService(Context.WINDOW_SERVICE));
+        WindowManager wm = (WindowManager) (RootApplication.getInstance().getSystemService(Context.WINDOW_SERVICE));
         DisplayMetrics dm = new DisplayMetrics();
         Objects.requireNonNull(wm).getDefaultDisplay().getMetrics(dm);
         return dm.widthPixels;
@@ -52,10 +50,9 @@ public class BaseTools {
     /**
      * 获得屏幕的高度
      */
-    public static int getWindowHeight(Context context) {
+    public static int getWindowHeight() {
         // 获取屏幕分辨率
-        WindowManager wm = (WindowManager) (context
-                .getSystemService(Context.WINDOW_SERVICE));
+        WindowManager wm = (WindowManager) (RootApplication.getInstance().getSystemService(Context.WINDOW_SERVICE));
         DisplayMetrics dm = new DisplayMetrics();
         Objects.requireNonNull(wm).getDefaultDisplay().getMetrics(dm);
         return dm.heightPixels;

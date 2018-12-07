@@ -73,6 +73,17 @@ public class WebViewActivity extends AppCompatActivity implements IWebPageView {
         webView.loadUrl(mUrl);
     }
 
+    private void getIntentData() {
+        if (getIntent() != null) {
+            mTitle = getIntent().getStringExtra("mTitle");
+            mUrl = getIntent().getStringExtra("mUrl");
+        }
+    }
+
+    public void setTitle(String mTitle) {
+        tvGunTitle.setText(mTitle);
+    }
+
     private void initTitle() {
         StatusBarUtil.setColor(this, CommonUtils.getColor(R.color.colorDefaultTheme), 0);
         mProgressBar = findViewById(R.id.pb_progress);
@@ -120,35 +131,34 @@ public class WebViewActivity extends AppCompatActivity implements IWebPageView {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case android.R.id.home:// 返回键
+            case android.R.id.home:
+                // 返回键
                 onBackPressed();
                 break;
-            case R.id.actionbar_share:// 分享到
+            case R.id.actionbar_share:
+                // 分享到
                 String shareText = mWebChromeClient.getTitle() + mUrl + "（分享自云阅）";
                 ShareUtils.share(WebViewActivity.this, shareText);
                 break;
-            case R.id.actionbar_cope:// 复制链接
+            case R.id.actionbar_copy:
+                // 复制链接
                 BaseTools.copy(mUrl);
                 ToastUtil.showShort("复制成功");
                 break;
-            case R.id.actionbar_open:// 打开链接
+            case R.id.actionbar_open:
+                // 打开链接
                 BaseTools.openLink(WebViewActivity.this, mUrl);
+                break;
+            case R.id.actionbar_refresh:
+                // 刷新页面
+                if (webView != null) {
+                    webView.reload();
+                }
                 break;
             default:
                 break;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    private void getIntentData() {
-        if (getIntent() != null) {
-            mTitle = getIntent().getStringExtra("mTitle");
-            mUrl = getIntent().getStringExtra("mUrl");
-        }
-    }
-
-    public void setTitle(String mTitle) {
-        tvGunTitle.setText(mTitle);
     }
 
     @SuppressLint("SetJavaScriptEnabled")

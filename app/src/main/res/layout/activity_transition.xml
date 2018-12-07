@@ -15,6 +15,13 @@
             android:scaleType="centerCrop"
             tools:ignore="ContentDescription" />
 
+        <ImageView
+            android:id="@+id/iv_default_pic"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            tools:ignore="ContentDescription" />
+
         <TextView
             android:id="@+id/tv_jump"
             android:layout_width="70dp"
@@ -28,13 +35,6 @@
             android:text="@string/string_jump"
             android:textColor="#fff"
             android:textSize="16sp" />
-
-        <ImageView
-            android:id="@+id/iv_default_pic"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            tools:ignore="ContentDescription" />
 
     </RelativeLayout>
 </layout>
