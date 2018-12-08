@@ -6,6 +6,7 @@ import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +17,6 @@ import android.widget.RelativeLayout;
 
 import com.hxd.root.R;
 import com.hxd.root.utils.PerfectClickListener;
-import com.trello.rxlifecycle2.components.support.RxFragment;
 
 import java.util.Objects;
 
@@ -26,7 +26,7 @@ import io.reactivex.disposables.Disposable;
 /**
  * 是没有title的Fragment
  */
-public abstract class BaseFragment<SV extends ViewDataBinding> extends RxFragment {
+public abstract class BaseFragment<SV extends ViewDataBinding> extends Fragment {
 
     // 布局view
     protected SV bindingView;
