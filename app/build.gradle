@@ -107,6 +107,7 @@ dependencies {
     implementation rootProject.ext.support["support-annotations"]
     implementation rootProject.ext.support["multidex"]
     implementation rootProject.ext.support["kotlin-jdk7"]
+
     // RxJava
     implementation rootProject.ext.dependencies["rxjava"]
     implementation rootProject.ext.dependencies["rxandroid"]
@@ -122,30 +123,9 @@ dependencies {
     // Rx管理View的生命周期(未启用)
     implementation rootProject.ext.dependencies["rxlifecycle"]
     implementation rootProject.ext.dependencies["rxlifecycle-components"]
-    // Glide图片加载库
-    implementation rootProject.ext.dependencies["glide"]
-    annotationProcessor rootProject.ext.dependencies["glide-compiler"]
-    // Glide图形转换器
-    implementation rootProject.ext.dependencies["glide-transformations"]
+
     // Json快速解析
     implementation rootProject.ext.dependencies["gson"]
-    // Google LiveData和ViewModel组件
-    implementation rootProject.ext.dependencies["lifecycle-extensions"]
-    annotationProcessor rootProject.ext.dependencies["lifecycle-compiler"]
-    // ReactiveStreams support for LiveData
-    implementation rootProject.ext.dependencies["lifecycle-reactivestreams"]
-
-    // Paging
-    implementation rootProject.ext.dependencies["paging-runtime"]
-    // RxJava2 support for Paging
-    implementation rootProject.ext.dependencies["paging-rxjava"]
-
-    // Room:  A powerful SQLite object mapping library
-    implementation rootProject.ext.dependencies["room-runtime"]
-    annotationProcessor rootProject.ext.dependencies["room-compiler"]
-    // RxJava2 support for Room
-    implementation rootProject.ext.dependencies["room-rxjava"]
-
     // Zxing二维码
     implementation rootProject.ext.dependencies["zxing"]
     // Logger日志打印
@@ -158,6 +138,27 @@ dependencies {
     implementation rootProject.ext.dependencies["bottomsheet"]
     // 蜂窝动画
     implementation rootProject.ext.dependencies["nineoldandroids"]
+
+    // Glide图片加载库
+    implementation rootProject.ext.dependencies["glide"]
+    annotationProcessor rootProject.ext.dependencies["glide-compiler"]
+    // Glide图形转换器
+    implementation rootProject.ext.dependencies["glide-transformations"]
+    // Google LiveData和ViewModel组件
+    implementation rootProject.ext.dependencies["lifecycle-extensions"]
+    annotationProcessor rootProject.ext.dependencies["lifecycle-compiler"]
+    // ReactiveStreams support for LiveData
+    implementation rootProject.ext.dependencies["lifecycle-reactivestreams"]
+
+    // Paging
+    implementation rootProject.ext.dependencies["paging-runtime"]
+    // RxJava2 support for Paging
+    implementation rootProject.ext.dependencies["paging-rxjava"]
+    // Room:  A powerful SQLite object mapping library
+    implementation rootProject.ext.dependencies["room-runtime"]
+    annotationProcessor rootProject.ext.dependencies["room-compiler"]
+    // RxJava2 support for Room
+    implementation rootProject.ext.dependencies["room-rxjava"]
 
     // Material-Dialogs(未启用)
     implementation(rootProject.ext.dependencies["material-dialogs-core"]) {
