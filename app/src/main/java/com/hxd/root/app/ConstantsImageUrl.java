@@ -3,7 +3,7 @@ package com.hxd.root.app;
 
 /**
  * 固定图片链接
- * Created by jingbin on 2018/10/21.
+ * Created by Cazaea on 2018/10/21.
  */
 
 public class ConstantsImageUrl {
@@ -33,44 +33,53 @@ public class ConstantsImageUrl {
     private static final String HOME_TWO_14 = "https://upload-images.jianshu.io/upload_images/1354448-1bd9533d45b4c549.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
 
     public static final String[] HOME_TWO_URLS = new String[]{
-            HOME_TWO_01, HOME_TWO_02, HOME_TWO_03, HOME_TWO_04, HOME_TWO_05, HOME_TWO_06, HOME_TWO_07, HOME_TWO_08, HOME_TWO_09,
-            HOME_TWO_10, HOME_TWO_11, HOME_TWO_12, HOME_TWO_13, HOME_TWO_14
+            HOME_TWO_01, HOME_TWO_02,
+            HOME_TWO_03, HOME_TWO_04,
+            HOME_TWO_05, HOME_TWO_06,
+            HOME_TWO_07, HOME_TWO_08,
+            HOME_TWO_09, HOME_TWO_10,
+            HOME_TWO_11, HOME_TWO_12,
+            HOME_TWO_13, HOME_TWO_14
     };
 
     /**
      * 一张图的随机图
      */
-    private static final String HOME_ONE_1 = "https://upload-images.jianshu.io/upload_images/1354448-b0c55ce0a5d8c15d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
-    private static final String HOME_ONE_2 = "https://upload-images.jianshu.io/upload_images/1354448-831e6a36c9f92408.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
-    private static final String HOME_ONE_3 = "https://upload-images.jianshu.io/upload_images/1354448-92484b45ce7e392f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
-    private static final String HOME_ONE_4 = "https://upload-images.jianshu.io/upload_images/1354448-046a9ed2d7c708a1.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
-    private static final String HOME_ONE_5 = "https://upload-images.jianshu.io/upload_images/1354448-f16d1e154b8eb7d3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
-    private static final String HOME_ONE_6 = "https://upload-images.jianshu.io/upload_images/1354448-43a72fc3e1fcb99f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
-    private static final String HOME_ONE_7 = "https://upload-images.jianshu.io/upload_images/1354448-00c6f54312d33966.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
-    private static final String HOME_ONE_8 = "https://upload-images.jianshu.io/upload_images/1354448-f61a6c9ebb079b4f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
-    private static final String HOME_ONE_9 = "https://upload-images.jianshu.io/upload_images/1354448-c46166c28b4b8de3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
+    private static final String HOME_ONE_01 = "https://upload-images.jianshu.io/upload_images/1354448-b0c55ce0a5d8c15d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
+    private static final String HOME_ONE_02 = "https://upload-images.jianshu.io/upload_images/1354448-831e6a36c9f92408.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
+    private static final String HOME_ONE_03 = "https://upload-images.jianshu.io/upload_images/1354448-92484b45ce7e392f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
+    private static final String HOME_ONE_04 = "https://upload-images.jianshu.io/upload_images/1354448-046a9ed2d7c708a1.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
+    private static final String HOME_ONE_05 = "https://upload-images.jianshu.io/upload_images/1354448-f16d1e154b8eb7d3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
+    private static final String HOME_ONE_06 = "https://upload-images.jianshu.io/upload_images/1354448-43a72fc3e1fcb99f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
+    private static final String HOME_ONE_07 = "https://upload-images.jianshu.io/upload_images/1354448-00c6f54312d33966.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
+    private static final String HOME_ONE_08 = "https://upload-images.jianshu.io/upload_images/1354448-f61a6c9ebb079b4f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
+    private static final String HOME_ONE_09 = "https://upload-images.jianshu.io/upload_images/1354448-c46166c28b4b8de3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
     private static final String HOME_ONE_10 = "https://upload-images.jianshu.io/upload_images/1354448-909ff9508c5c108a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
     private static final String HOME_ONE_11 = "https://upload-images.jianshu.io/upload_images/1354448-73e30372938d5d66.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
     private static final String HOME_ONE_12 = "https://upload-images.jianshu.io/upload_images/1354448-0987ec655be7678c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
 
     public static final String[] HOME_ONE_URLS = new String[]{
-            HOME_ONE_1, HOME_ONE_2, HOME_ONE_3, HOME_ONE_4, HOME_ONE_5, HOME_ONE_6, HOME_ONE_7, HOME_ONE_8, HOME_ONE_9,
-            HOME_ONE_10, HOME_ONE_11, HOME_ONE_12
+            HOME_ONE_01, HOME_ONE_02,
+            HOME_ONE_03, HOME_ONE_04,
+            HOME_ONE_05, HOME_ONE_06,
+            HOME_ONE_07, HOME_ONE_08,
+            HOME_ONE_09, HOME_ONE_10,
+            HOME_ONE_11, HOME_ONE_12
     };
 
 
     /**
      * 6张图的随机图
      */
-    private static final String HOME_SIX_1 = "https://upload-images.jianshu.io/upload_images/1354448-7809c9d06fbc69bd.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
-    private static final String HOME_SIX_2 = "https://upload-images.jianshu.io/upload_images/1354448-99a9167cffe7fdeb.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
-    private static final String HOME_SIX_3 = "https://upload-images.jianshu.io/upload_images/1354448-a0c2a61de41a488f.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
-    private static final String HOME_SIX_4 = "https://upload-images.jianshu.io/upload_images/1354448-07df75e808900d70.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
-    private static final String HOME_SIX_5 = "https://upload-images.jianshu.io/upload_images/1354448-3626ebd8d0c0b872.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
-    private static final String HOME_SIX_6 = "https://upload-images.jianshu.io/upload_images/1354448-59b0efcfd5a1ca1e.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
-    private static final String HOME_SIX_7 = "https://upload-images.jianshu.io/upload_images/1354448-83d07825df5b8b74.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
-    private static final String HOME_SIX_8 = "https://upload-images.jianshu.io/upload_images/1354448-64e89cdbf69d3450.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
-    private static final String HOME_SIX_9 = "https://upload-images.jianshu.io/upload_images/1354448-aba2ff069d810f78.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
+    private static final String HOME_SIX_01 = "https://upload-images.jianshu.io/upload_images/1354448-7809c9d06fbc69bd.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
+    private static final String HOME_SIX_02 = "https://upload-images.jianshu.io/upload_images/1354448-99a9167cffe7fdeb.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
+    private static final String HOME_SIX_03 = "https://upload-images.jianshu.io/upload_images/1354448-a0c2a61de41a488f.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
+    private static final String HOME_SIX_04 = "https://upload-images.jianshu.io/upload_images/1354448-07df75e808900d70.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
+    private static final String HOME_SIX_05 = "https://upload-images.jianshu.io/upload_images/1354448-3626ebd8d0c0b872.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
+    private static final String HOME_SIX_06 = "https://upload-images.jianshu.io/upload_images/1354448-59b0efcfd5a1ca1e.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
+    private static final String HOME_SIX_07 = "https://upload-images.jianshu.io/upload_images/1354448-83d07825df5b8b74.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
+    private static final String HOME_SIX_08 = "https://upload-images.jianshu.io/upload_images/1354448-64e89cdbf69d3450.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
+    private static final String HOME_SIX_09 = "https://upload-images.jianshu.io/upload_images/1354448-aba2ff069d810f78.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
     private static final String HOME_SIX_10 = "https://upload-images.jianshu.io/upload_images/1354448-223fc230d24221b0.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
     private static final String HOME_SIX_11 = "https://upload-images.jianshu.io/upload_images/1354448-b6a29926f4f9e7ab.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
     private static final String HOME_SIX_12 = "https://upload-images.jianshu.io/upload_images/1354448-5041d0d6b2aff960.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
@@ -88,8 +97,17 @@ public class ConstantsImageUrl {
     private static final String HOME_SIX_24 = "https://upload-images.jianshu.io/upload_images/1354448-80bfca7ae528e301.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
 
     public static final String[] HOME_SIX_URLS = new String[]{
-            HOME_SIX_1, HOME_SIX_2, HOME_SIX_3, HOME_SIX_4, HOME_SIX_5, HOME_SIX_6, HOME_SIX_7, HOME_SIX_8, HOME_SIX_9,
-            HOME_SIX_10, HOME_SIX_11, HOME_SIX_12, HOME_SIX_13, HOME_SIX_14, HOME_SIX_15, HOME_SIX_16, HOME_SIX_17, HOME_SIX_18, HOME_SIX_19,
-            HOME_SIX_20, HOME_SIX_21, HOME_SIX_22, HOME_SIX_23, HOME_SIX_24
+            HOME_SIX_01, HOME_SIX_02,
+            HOME_SIX_03, HOME_SIX_04,
+            HOME_SIX_05, HOME_SIX_06,
+            HOME_SIX_07, HOME_SIX_08,
+            HOME_SIX_09, HOME_SIX_10,
+            HOME_SIX_11, HOME_SIX_12,
+            HOME_SIX_13, HOME_SIX_14,
+            HOME_SIX_15, HOME_SIX_16,
+            HOME_SIX_17, HOME_SIX_18,
+            HOME_SIX_19, HOME_SIX_20,
+            HOME_SIX_21, HOME_SIX_22,
+            HOME_SIX_23, HOME_SIX_24
     };
 }

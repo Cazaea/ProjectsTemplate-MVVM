@@ -63,19 +63,19 @@ public class DensityUtil {
      * @param view   需要设置的view
      * @param isDp   需要设置的数值是否为DP
      * @param left   左边距
-     * @param right  右边距
      * @param top    上边距
+     * @param right  右边距
      * @param bottom 下边距
      * @return
      */
-    public static ViewGroup.LayoutParams setViewMargin(View view, boolean isDp, int left, int right, int top, int bottom) {
+    public static ViewGroup.LayoutParams setViewMargin(View view, boolean isDp, int left, int top, int right, int bottom) {
         if (view == null) {
             return null;
         }
 
         int leftPx = left;
-        int rightPx = right;
         int topPx = top;
+        int rightPx = right;
         int bottomPx = bottom;
         ViewGroup.LayoutParams params = view.getLayoutParams();
         ViewGroup.MarginLayoutParams marginParams = null;
@@ -153,15 +153,17 @@ public class DensityUtil {
     /**
      * 通过比例设置控件的高度
      *
-     * @param width  图片的宽
-     * @param bili   图片比例
+     * @param width  控件的宽
+     * @param bili   控件的 高/宽 比例
      * @param margin 添加固定高度，可不传
      */
-    public static void formatViewHeight(View view, int width, float bili, float... margin) {
+    public static void formatHeight(View view, int width, float bili, float... margin) {
+        // 根据宽度获取比例高度
         int height = (int) (width * bili);
-        ViewGroup.LayoutParams params = view.getLayoutParams();
         if (margin != null && margin.length != 0)
             height += DensityUtil.dip2px(margin[0]);
+        // 设置同等比例高度
+        ViewGroup.LayoutParams params = view.getLayoutParams();
         params.height = height;
         params.width = width;
         view.setLayoutParams(params);

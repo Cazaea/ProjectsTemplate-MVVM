@@ -82,7 +82,10 @@ public class HomeFragment2 extends BaseFragment<FragmentHome2Binding> {
 
         // 准备就绪
         isPrepared = true;
-
+        /**
+         * 因为启动时先走loadData()再走onActivityCreated，
+         * 所以此处要额外调用load(),不然最初不会加载内容
+         */
         loadData();
     }
 
@@ -240,9 +243,9 @@ public class HomeFragment2 extends BaseFragment<FragmentHome2Binding> {
      */
     private void showBannerView(HeaderItemHomeBinding binding, List<BannerBean> banner) {
         // 格式化控件宽高
-        DensityUtil.formatViewHeight(binding.homeBanner, DensityUtil.getDisplayWidth(), (32 / 75f));
+        DensityUtil.formatHeight(binding.homeBanner, DensityUtil.getDisplayWidth(), (32 / 75f));
         // 外层布局格式化，添加固定高度
-        DensityUtil.formatViewHeight(binding.rlBannerParent, DensityUtil.getDisplayWidth(), (32 / 75f), 20f);
+        DensityUtil.formatHeight(binding.rlBannerParent, DensityUtil.getDisplayWidth(), (32 / 75f), 20f);
 
         List<String> mBannerTitle = new ArrayList<>();
         List<String> mBannerImages = new ArrayList<>();

@@ -1,12 +1,10 @@
 package com.hxd.root.vmodel.login;
 
-import android.annotation.SuppressLint;
+import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.databinding.ObservableField;
 import android.text.TextUtils;
 
-import com.hxd.root.app.Constants;
-import com.hxd.root.base.BaseActivity;
 import com.hxd.root.data.UserUtil;
 import com.hxd.root.data.room.Injection;
 import com.hxd.root.data.room.User;
@@ -15,70 +13,48 @@ import com.hxd.root.http.base.BaseSubscriber;
 import com.hxd.root.http.exception.ResponseThrowable;
 import com.hxd.root.http.rxutils.RxUtils;
 import com.hxd.root.utils.ToastUtil;
-import com.thejoyrun.router.Router;
 
 /**
  * @author Cazaea
  * @date 2018/5/7
  * @Description
  */
-
 public class LoginViewModel extends ViewModel {
 
-    @SuppressLint("StaticFieldLeak")
-    private BaseActivity activity;
-    private LoginNavigator navigator;
-
+    /**
+     * 表单数据
+     */
     public final ObservableField<String> account = new ObservableField<>();
     public final ObservableField<String> password = new ObservableField<>();
-
-    public LoginViewModel(BaseActivity activity) {
-        this.activity = activity;
-    }
-
-    public void setNavigator(LoginNavigator navigator) {
-        this.navigator = navigator;
-    }
 
     /**
      * 用户登录
      */
-    public void login() {
+    public MutableLiveData<Boolean> login() {
+        final MutableLiveData<Boolean> data = new MutableLiveData<>();
         if (!verifyUserInfo()) {
-            return;
+            data.setValue(false);
+            return data;
         }
         HttpClient.Builder.getBaseServer()
                 .login(account.get(), password.get())
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
-                .subscribe(new BaseSubscriber<User>(activity) {
+                .subscribe(new BaseSubscriber<User>() {
                     @Override
                     public void onError(ResponseThrowable e) {
                         ToastUtil.showShort(e.getMessage());
+                        data.setValue(false);
                     }
 
                     @Override
                     public void onResult(User pUser) {
                         Injection.get().addData(pUser);
                         UserUtil.handleLoginSuccess();
-                        navigator.loadSuccess();
+                        data.setValue(true);
                     }
-
                 });
-    }
-
-    /**
-     * 用户找回密码
-     */
-    public void goRecover() {
-        Router.startActivity(activity, Constants.ROUTER_TOTAL_HEAD + "recover");
-    }
-
-    /**
-     * 手机号快速注册
-     */
-    public void goRegister() {
-        Router.startActivity(activity, Constants.ROUTER_TOTAL_HEAD + "register");
+        return data;
     }
 
     /**
@@ -98,7 +74,4 @@ public class LoginViewModel extends ViewModel {
         return true;
     }
 
-    public void onDestroy() {
-        navigator = null;
-    }
 }

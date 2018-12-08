@@ -4,7 +4,6 @@ import android.content.Context;
 
 import com.hxd.root.http.exception.ApiException;
 import com.hxd.root.http.exception.ResponseThrowable;
-import com.hxd.root.http.rxutils.NetworkUtil;
 
 import io.reactivex.observers.DisposableObserver;
 
@@ -20,18 +19,14 @@ public abstract class BaseSubscriber<T> extends DisposableObserver<T> {
     private Context context;
     private boolean isNeedCahe;
 
-    public BaseSubscriber(Context context) {
-        this.context = context;
-    }
-
     @Override
     public void onStart() {
         super.onStart();
         // TODO some common as show loading  and check netWork is NetworkAvailable
         // if NetworkAvailable no ! Must to call onComplete
-        if (!NetworkUtil.isNetworkConnected(context)) {
-            onComplete();
-        }
+//        if (!NetworkUtil.isNetworkConnected(context)) {
+//            onComplete();
+//        }
     }
 
     @Override

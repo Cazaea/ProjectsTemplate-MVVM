@@ -36,10 +36,10 @@ import io.reactivex.disposables.Disposable;
  * ░     ░ ░      ░  ░
  */
 @SuppressLint("Registered")
-public class BaseActivity<V extends ViewDataBinding> extends RxAppCompatActivity {
+public class BaseActivity<SV extends ViewDataBinding> extends RxAppCompatActivity {
 
     // 布局View
-    protected V bindingView;
+    protected SV bindingView;
     private View refresh;
     private View loadingView;
     private ActivityBaseBinding mBaseBinding;

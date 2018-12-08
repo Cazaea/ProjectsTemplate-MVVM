@@ -170,9 +170,9 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> implements B
     @Override
     public void showBannerView(ArrayList<String> bannerTitle, ArrayList<String> bannerImages, List<BannerBean> result) {
         // 格式化控件宽高
-        DensityUtil.formatViewHeight(mHeaderBinding.homeBanner, DensityUtil.getDisplayWidth(), (32 / 75f));
+        DensityUtil.formatHeight(mHeaderBinding.homeBanner, DensityUtil.getDisplayWidth(), (32 / 75f));
         // 外层布局格式化，添加固定高度
-        DensityUtil.formatViewHeight(mHeaderBinding.rlBannerParent, DensityUtil.getDisplayWidth(), (32 / 75f), 20f);
+        DensityUtil.formatHeight(mHeaderBinding.rlBannerParent, DensityUtil.getDisplayWidth(), (32 / 75f), 20f);
 
         mHeaderBinding.homeBanner.setVisibility(View.VISIBLE);
         mHeaderBinding.homeBanner.setBannerTitles(bannerTitle);

@@ -1,12 +1,11 @@
 package com.hxd.root.vmodel.login;
 
-import android.annotation.SuppressLint;
+import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.databinding.ObservableField;
 import android.text.TextUtils;
 
 import com.hxd.root.app.Constants;
-import com.hxd.root.base.BaseActivity;
 import com.hxd.root.bean.CommonBean;
 import com.hxd.root.bean.login.RegisterBean;
 import com.hxd.root.http.HttpClient;
@@ -29,18 +28,6 @@ public class RegisterViewModel extends ViewModel {
     public final ObservableField<String> password = new ObservableField<>();
     public final ObservableField<String> code = new ObservableField<>();
     public final ObservableField<String> referee_tel = new ObservableField<>();
-
-    @SuppressLint("StaticFieldLeak")
-    private BaseActivity activity;
-    private LoginNavigator navigator;
-
-    public RegisterViewModel(BaseActivity activity) {
-        this.activity = activity;
-    }
-
-    public void setNavigator(LoginNavigator navigator) {
-        this.navigator = navigator;
-    }
 
     /**
      * 获取验证码
@@ -82,9 +69,11 @@ public class RegisterViewModel extends ViewModel {
     /**
      * 用户注册
      */
-    public void register() {
+    public MutableLiveData<Boolean> register() {
+        final MutableLiveData<Boolean> data = new MutableLiveData<>();
         if (!verifyRegisterInfo()) {
-            return;
+            data.setValue(false);
+            return data;
         }
         HttpClient.Builder.getBaseServer().register(account.get(), password.get(), code.get(), referee_tel.get())
                 .subscribeOn(Schedulers.io())
@@ -107,13 +96,16 @@ public class RegisterViewModel extends ViewModel {
                     public void onNext(RegisterBean bean) {
                         if (bean != null && bean.getData() != null && bean.getCode() == 1000) {
                             ToastUtil.showShort(bean.getMsg());
+                            data.setValue(true);
                         } else {
                             if (bean != null) {
                                 ToastUtil.showLong(bean.getMsg());
                             }
+                            data.setValue(false);
                         }
                     }
                 });
+        return data;
     }
 
     /**
@@ -154,7 +146,4 @@ public class RegisterViewModel extends ViewModel {
         return true;
     }
 
-    public void onDestroy() {
-        navigator = null;
-    }
 }

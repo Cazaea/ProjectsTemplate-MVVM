@@ -1,5 +1,6 @@
 package com.hxd.root.ui.login;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +9,6 @@ import android.view.View;
 import com.hxd.root.R;
 import com.hxd.root.base.BaseActivity;
 import com.hxd.root.databinding.ActivityRecoverBinding;
-import com.hxd.root.vmodel.login.LoginNavigator;
 import com.hxd.root.vmodel.login.RecoverViewModel;
 import com.thejoyrun.router.RouterActivity;
 
@@ -16,7 +16,7 @@ import com.thejoyrun.router.RouterActivity;
  * @author Cazaea
  */
 @RouterActivity("recover")
-public class RecoverActivity extends BaseActivity<ActivityRecoverBinding> implements LoginNavigator {
+public class RecoverActivity extends BaseActivity<ActivityRecoverBinding>{
 
     private RecoverViewModel viewModel;
 
@@ -27,8 +27,7 @@ public class RecoverActivity extends BaseActivity<ActivityRecoverBinding> implem
         setTitle("找回密码");
         showContentView();
 
-        viewModel = new RecoverViewModel(this);
-        viewModel.setNavigator(this);
+        viewModel = ViewModelProviders.of(this).get(RecoverViewModel.class);
         bindingView.setRecover(viewModel);
     }
 
@@ -37,15 +36,16 @@ public class RecoverActivity extends BaseActivity<ActivityRecoverBinding> implem
     }
 
     public void recover(View view) {
-        viewModel.recover();
+        viewModel.recover().observe(this,this::loadSuccess);
     }
 
     /**
      * 注册或登录成功
      */
-    @Override
-    public void loadSuccess() {
-        finish();
+    public void loadSuccess(Boolean aBoolean) {
+        if (aBoolean != null && aBoolean) {
+            finish();
+        }
     }
 
     public static void start(Context mContext) {
@@ -53,9 +53,4 @@ public class RecoverActivity extends BaseActivity<ActivityRecoverBinding> implem
         mContext.startActivity(intent);
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        viewModel.onDestroy();
-    }
 }

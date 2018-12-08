@@ -1,12 +1,11 @@
 package com.hxd.root.vmodel.login;
 
-import android.annotation.SuppressLint;
+import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.databinding.ObservableField;
 import android.text.TextUtils;
 
 import com.hxd.root.app.Constants;
-import com.hxd.root.base.BaseActivity;
 import com.hxd.root.bean.CommonBean;
 import com.hxd.root.http.HttpClient;
 import com.hxd.root.utils.ToastUtil;
@@ -27,18 +26,6 @@ public class RecoverViewModel extends ViewModel {
     public final ObservableField<String> account = new ObservableField<>();
     public final ObservableField<String> password = new ObservableField<>();
     public final ObservableField<String> code = new ObservableField<>();
-
-    @SuppressLint("StaticFieldLeak")
-    private BaseActivity activity;
-    private LoginNavigator navigator;
-
-    public RecoverViewModel(BaseActivity activity) {
-        this.activity = activity;
-    }
-
-    public void setNavigator(LoginNavigator navigator) {
-        this.navigator = navigator;
-    }
 
     /**
      * 获取验证码
@@ -76,15 +63,16 @@ public class RecoverViewModel extends ViewModel {
                         }
                     }
                 });
-//        activity.addDisposable(subscribe);
     }
 
     /**
      * 用户找回密码
      */
-    public void recover() {
+    public MutableLiveData<Boolean> recover() {
+        final MutableLiveData<Boolean> data = new MutableLiveData<>();
         if (!verifyRecoverInfo()) {
-            return;
+            data.setValue(false);
+            return data;
         }
         HttpClient.Builder.getBaseServer()
                 .findPsw(account.get(), code.get(), password.get())
@@ -108,13 +96,16 @@ public class RecoverViewModel extends ViewModel {
                     public void onNext(CommonBean bean) {
                         if (bean != null && bean.getData() != null && bean.getCode() == 1000) {
                             ToastUtil.showShort(bean.getMsg());
+                            data.setValue(true);
                         } else {
                             if (bean != null) {
                                 ToastUtil.showLong(bean.getMsg());
                             }
+                            data.setValue(false);
                         }
                     }
                 });
+        return data;
     }
 
     /**
@@ -151,7 +142,4 @@ public class RecoverViewModel extends ViewModel {
         return true;
     }
 
-    public void onDestroy() {
-        navigator = null;
-    }
 }

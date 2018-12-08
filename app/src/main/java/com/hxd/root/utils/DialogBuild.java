@@ -2,6 +2,8 @@ package com.hxd.root.utils;
 
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.AppCompatEditText;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
@@ -11,6 +13,8 @@ import com.hxd.root.data.room.Injection;
 import com.hxd.root.data.room.User;
 import com.hxd.root.data.room.UserDataCallback;
 import com.hxd.root.view.OnLoginListener;
+
+import java.util.Objects;
 
 /**
  * @author Cazaea
@@ -30,6 +34,14 @@ public class DialogBuild {
         titleTop.setText(title);
         builder.setView(view);
         builder.setPositiveButton("查看详情", clickListener);
+        builder.show();
+    }
+
+    public static void show(View v, String title, String buttonText, DialogInterface.OnClickListener clickListener) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+        builder.setTitle("提示");
+        builder.setMessage(title);
+        builder.setPositiveButton(buttonText, clickListener);
         builder.show();
     }
 
@@ -105,6 +117,42 @@ public class DialogBuild {
             }
         });
         builder.show();
+    }
+
+    /**
+     * 编辑收藏网址
+     */
+    public static void show(View v, String name, String link, OnEditClickListener listener) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+        builder.setTitle("编辑");
+        View inflate = View.inflate(v.getContext(), R.layout.dialog_eidt_url, null);
+        builder.setView(inflate);
+        AppCompatEditText etName = inflate.findViewById(R.id.et_name);
+        AppCompatEditText etLink = inflate.findViewById(R.id.et_link);
+        if (!TextUtils.isEmpty(name)) {
+            etName.setText(name);
+            etName.setSelection(name.length());
+        }
+        etLink.setText(link);
+        builder.setNegativeButton("取消", null);
+        builder.setPositiveButton("编辑完成", (dialog, which) -> {
+            String name1 = Objects.requireNonNull(etName.getText()).toString().trim();
+            String link1 = Objects.requireNonNull(etLink.getText()).toString().trim();
+            if (TextUtils.isEmpty(name1)) {
+                ToastUtil.showLong("请输入名称");
+                return;
+            }
+            if (TextUtils.isEmpty(link1)) {
+                ToastUtil.showLong("请输入链接");
+                return;
+            }
+            listener.onClick(name1, link1);
+        });
+        builder.show();
+    }
+
+    public interface OnEditClickListener {
+        void onClick(String name, String link);
     }
 
 }

@@ -242,9 +242,9 @@ public class FunctionAdapter3 extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     private void showBannerView(HeaderItemHomeBinding binding, List<BannerBean> banner) {
         // 格式化控件宽高
-        DensityUtil.formatViewHeight(binding.homeBanner, DensityUtil.getDisplayWidth(), (32 / 75f));
+        DensityUtil.formatHeight(binding.homeBanner, DensityUtil.getDisplayWidth(), (32 / 75f));
         // 外层布局格式化，添加固定高度
-        DensityUtil.formatViewHeight(binding.rlBannerParent, DensityUtil.getDisplayWidth(), (32 / 75f), 20f);
+        DensityUtil.formatHeight(binding.rlBannerParent, DensityUtil.getDisplayWidth(), (32 / 75f), 20f);
 
         List<String> mBannerTitle = new ArrayList<>();
         List<String> mBannerImages = new ArrayList<>();

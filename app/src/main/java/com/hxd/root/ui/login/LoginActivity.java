@@ -1,6 +1,7 @@
 package com.hxd.root.ui.login;
 
 import android.annotation.SuppressLint;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,14 +14,13 @@ import com.hxd.root.databinding.ActivityLoginBinding;
 import com.hxd.root.utils.BaseTools;
 import com.hxd.root.utils.CommonUtils;
 import com.hxd.root.utils.DebugUtil;
-import com.hxd.root.vmodel.login.LoginNavigator;
 import com.hxd.root.vmodel.login.LoginViewModel;
 import com.thejoyrun.router.Router;
 
 /**
  * @author Cazaea
  */
-public class LoginActivity extends BaseActivity<ActivityLoginBinding> implements LoginNavigator {
+public class LoginActivity extends BaseActivity<ActivityLoginBinding> {
 
     private LoginViewModel viewModel;
 
@@ -31,8 +31,7 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding> implements
         setTitle("登录");
         showContentView();
 
-        viewModel = new LoginViewModel(this);
-        viewModel.setNavigator(this);
+        viewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
         bindingView.setLogin(viewModel);
     }
 
@@ -54,24 +53,34 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding> implements
         }
     }
 
+    /**
+     * 用户登录
+     */
     public void login(View view) {
-        viewModel.login();
+        viewModel.login().observe(this, this::loadSuccess);
     }
 
+    /**
+     * 手机号快速注册
+     */
     public void goRegister(View view) {
-        viewModel.goRegister();
+        RegisterActivity.start(LoginActivity.this);
     }
 
+    /**
+     * 用户找回密码
+     */
     public void goRecover(View view) {
-        viewModel.goRecover();
+        RecoverActivity.start(LoginActivity.this);
     }
 
     /**
      * 注册或登录成功
      */
-    @Override
-    public void loadSuccess() {
-        finish();
+    public void loadSuccess(Boolean aBoolean) {
+        if (aBoolean != null && aBoolean) {
+            finish();
+        }
     }
 
     /**
@@ -82,9 +91,4 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding> implements
         mContext.startActivity(intent);
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        viewModel.onDestroy();
-    }
 }
