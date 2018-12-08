@@ -63,8 +63,8 @@ ext {
             "slider"                     : "com.daimajia.slider:library:1.1.5@aar",
 
             //paging
-            "paging-runtime"             : "android.arch.paging:runtime:1.0.1",
             "paging-rxjava"              : "android.arch.paging:rxjava2:1.0.1",
+            "paging-runtime"             : "android.arch.paging:runtime:1.0.1",
 
             //room
             "room-rxjava"                : "android.arch.persistence.room:rxjava2:1.1.1",
