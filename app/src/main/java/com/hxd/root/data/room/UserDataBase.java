@@ -23,6 +23,16 @@ public abstract class UserDataBase extends RoomDatabase {
 
     public abstract UserDao waitDao();
 
+    public static UserDataBase getDatabase() {
+        if (sInstance == null) {
+            sInstance = Room.databaseBuilder(RootApplication.getInstance(),
+                    UserDataBase.class, "User.db")
+                    .addMigrations(MIGRATION_1_2)
+                    .build();
+        }
+        return sInstance;
+    }
+
     /**
      * 版本号迁移：
      * http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2017/0728/8278.html
@@ -33,16 +43,6 @@ public abstract class UserDataBase extends RoomDatabase {
             // Since we didn't alter the table, there's nothing else to do here.
         }
     };
-
-    public static UserDataBase getDatabase() {
-        if (sInstance == null) {
-            sInstance = Room.databaseBuilder(RootApplication.getInstance(),
-                    UserDataBase.class, "User.db")
-                    .addMigrations(MIGRATION_1_2)
-                    .build();
-        }
-        return sInstance;
-    }
 
     public static void onDestroy() {
         sInstance = null;

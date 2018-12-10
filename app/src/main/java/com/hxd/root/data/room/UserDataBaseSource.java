@@ -75,7 +75,6 @@ public class UserDataBaseSource {
         mAppExecutors.diskIO().execute(runnable);
     }
 
-
     /**
      * 更新数据
      */
@@ -91,7 +90,7 @@ public class UserDataBaseSource {
     }
 
     /**
-     * 清除数据库
+     * 清除全部数据集合
      */
     public void deleteAllData() {
         Runnable saveRunnable = () -> {
@@ -102,20 +101,6 @@ public class UserDataBaseSource {
             }
         };
         mAppExecutors.diskIO().execute(saveRunnable);
-    }
-
-    /**
-     * 获取数据集合
-     */
-    @SuppressLint("CheckResult")
-    public void getAll() {
-        UserDataBase.getDatabase().waitDao().findAll()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(users -> {
-//                        DebugUtil.error("----waitList.size():" + users.size());
-//                        DebugUtil.error("----waitList:" + users.toString());
-                });
     }
 
     /**
@@ -134,4 +119,22 @@ public class UserDataBaseSource {
         };
         mAppExecutors.diskIO().execute(runnable);
     }
+
+    /**
+     * 可链式调用的[获取全部数据集合]
+     */
+    @SuppressLint("CheckResult")
+    public void getAll() {
+        UserDataBase.getDatabase()
+                .waitDao()
+                .findAll()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(users -> {
+//                        DebugUtil.error("----waitList.size():" + users.size());
+//                        DebugUtil.error("----waitList:" + users.toString());
+                });
+    }
+
+
 }

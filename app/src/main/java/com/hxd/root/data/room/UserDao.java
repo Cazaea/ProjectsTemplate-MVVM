@@ -69,12 +69,12 @@ public interface UserDao {
     @Query("SELECT * FROM User WHERE id = :id")
     Flowable<User> getUserById(String id);
 
-//    /**
-//     * 清空数据库
-//     * Delete all User.
-//     */
-//    @Query("DELETE FROM User")
-//    void deleteAllData();
+    /**
+     * 清空数据库
+     * Delete all User.
+     */
+    @Query("DELETE FROM User")
+    void deleteAllData();
 
     /**
      * 清空数据库
