@@ -1,4 +1,4 @@
-package com.hxd.root.http.cache;
+package com.hxd.root.vmodel.main.home;
 
 import android.arch.lifecycle.MutableLiveData;
 
@@ -17,7 +17,7 @@ import io.reactivex.schedulers.Schedulers;
  * <p>
  * 接口数据缓存
  */
-public class Repository {
+public class HomeRepository {
 
     /**
      * 首页数据

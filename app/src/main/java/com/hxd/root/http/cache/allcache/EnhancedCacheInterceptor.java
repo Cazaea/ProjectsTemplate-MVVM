@@ -1,4 +1,4 @@
-package com.hxd.root.http.cache.fullcache;
+package com.hxd.root.http.cache.allcache;
 
 import android.support.annotation.NonNull;
 import android.util.Log;

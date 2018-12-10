@@ -8,7 +8,11 @@ import retrofit2.Converter;
 import retrofit2.Retrofit;
 
 /**
- * Created by Cazaea on 2017/2/14.
+ * 作 者： Cazaea
+ * 日 期： 2018/10/12
+ * 邮 箱： wistorm@sina.com
+ * <p>
+ * 构建Gson空值转换器, 避免转换异常
  */
 public class NullOnEmptyConverterFactory extends Converter.Factory {
 

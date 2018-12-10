@@ -1,4 +1,4 @@
-package com.hxd.root.http.cache.fullcache;
+package com.hxd.root.http.cache.allcache;
 
 import retrofit2.Call;
 import retrofit2.Response;

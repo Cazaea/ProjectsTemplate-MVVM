@@ -1,4 +1,4 @@
-package com.hxd.root.http.cache.fullcache;
+package com.hxd.root.http.cache.allcache;
 
 /**
  * 作 者： Cazaea

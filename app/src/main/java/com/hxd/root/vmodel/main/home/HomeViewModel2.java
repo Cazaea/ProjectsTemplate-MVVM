@@ -5,7 +5,6 @@ import android.arch.lifecycle.MutableLiveData;
 
 import com.hxd.root.base.BaseListViewModel;
 import com.hxd.root.bean.home.HomeInfoBean;
-import com.hxd.root.http.cache.Repository;
 
 /**
  * @author Cazaea
@@ -15,11 +14,11 @@ import com.hxd.root.http.cache.Repository;
 
 public class HomeViewModel2 extends BaseListViewModel {
 
-    private Repository mRepository;
+    private HomeRepository mHomeRepository;
     private MutableLiveData<HomeInfoBean> mHomeLiveData;
 
     public HomeViewModel2() {
-        this.mRepository = new Repository();
+        this.mHomeRepository = new HomeRepository();
     }
 
     private void setHomeBean(MutableLiveData<HomeInfoBean> pHomeLiveData) {
@@ -38,7 +37,7 @@ public class HomeViewModel2 extends BaseListViewModel {
     }
 
     private MutableLiveData<HomeInfoBean> loadHomeData() {
-        MutableLiveData<HomeInfoBean> _homeData = mRepository.getHomeData();
+        MutableLiveData<HomeInfoBean> _homeData = mHomeRepository.getHomeData();
         setHomeBean(_homeData);
         return _homeData;
     }
