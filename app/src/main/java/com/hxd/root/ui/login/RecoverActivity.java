@@ -16,7 +16,7 @@ import com.thejoyrun.router.RouterActivity;
  * @author Cazaea
  */
 @RouterActivity("recover")
-public class RecoverActivity extends BaseActivity<ActivityRecoverBinding>{
+public class RecoverActivity extends BaseActivity<ActivityRecoverBinding> {
 
     private RecoverViewModel viewModel;
 
@@ -36,7 +36,7 @@ public class RecoverActivity extends BaseActivity<ActivityRecoverBinding>{
     }
 
     public void recover(View view) {
-        viewModel.recover().observe(this,this::loadSuccess);
+        viewModel.recover().observe(this, this::loadSuccess);
     }
 
     /**
