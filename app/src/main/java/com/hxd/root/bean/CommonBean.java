@@ -12,28 +12,9 @@ public class CommonBean extends BaseObservable {
     /**
      * code : 1000
      * msg : 密码更新成功
-     * data : null
+     * data : null / "1328" / {}
      */
-
-    private int code;
-    private String msg;
     private Object data;
-
-    public int getCode() {
-        return code;
-    }
-
-    public void setCode(int code) {
-        this.code = code;
-    }
-
-    public String getMsg() {
-        return msg;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
 
     public Object getData() {
         return data;
