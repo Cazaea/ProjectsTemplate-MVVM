@@ -13,8 +13,8 @@ import com.hxd.root.http.interceptor.HttpCacheInterceptor;
 import com.hxd.root.http.interceptor.HttpCookiesInterceptor;
 import com.hxd.root.http.interceptor.HttpHeaderInterceptor;
 import com.hxd.root.http.interceptor.ReceivedCookiesInterceptor;
-import com.hxd.root.http.interceptor.httplogger.Logger;
-import com.hxd.root.http.interceptor.httplogger.LoggerInterceptor;
+import com.hxd.root.http.interceptor.httplogger.HttpLogger;
+import com.hxd.root.http.interceptor.httplogger.HttpLoggerInterceptor;
 import com.hxd.root.http.interceptor.httpparams.HttpFixedParams;
 import com.hxd.root.http.rxutils.HttpsUtils;
 import com.hxd.root.http.rxutils.ImplTokenGetListener;
@@ -241,14 +241,14 @@ public class HttpUtils {
      *
      * @return HttpLogger拦截器
      */
-    private LoggerInterceptor getLoggerInterceptor() {
+    private HttpLoggerInterceptor getLoggerInterceptor() {
         // 自定义网络请求Json日志输出形式
-        Logger httpLogger = new Logger();
-        LoggerInterceptor logInterceptor = new LoggerInterceptor(httpLogger);
+        HttpLogger httpLogger = new HttpLogger();
+        HttpLoggerInterceptor logInterceptor = new HttpLoggerInterceptor(httpLogger);
         if (DebugUtil.isDebug()) {
-            logInterceptor.setLevel(LoggerInterceptor.Level.BODY); // 测试
+            logInterceptor.setLevel(HttpLoggerInterceptor.Level.BODY); // 测试
         } else {
-            logInterceptor.setLevel(LoggerInterceptor.Level.NONE); // 打包
+            logInterceptor.setLevel(HttpLoggerInterceptor.Level.NONE); // 打包
         }
         return logInterceptor;
     }

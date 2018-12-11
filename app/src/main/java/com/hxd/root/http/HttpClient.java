@@ -5,7 +5,7 @@ import com.hxd.root.bean.ConfigBean;
 import com.hxd.root.bean.UpdateBean;
 import com.hxd.root.bean.home.HomeInfoBean;
 import com.hxd.root.bean.lease.LeaseBean;
-import com.hxd.root.bean.login.RegisterBean;
+import com.hxd.root.bean.login.ImageCodeBean;
 import com.hxd.root.bean.mine.PayFrontBean;
 import com.hxd.root.bean.product.ProductBean;
 import com.hxd.root.bean.product.buy.ProductInfoBean;
@@ -47,7 +47,6 @@ public interface HttpClient {
             return HttpUtils.getInstance().getServer(HttpClient.class, HttpUtils.API_UPDATE);
         }
     }
-
 
 
     //********************************************************************************************************************//
@@ -102,17 +101,27 @@ public interface HttpClient {
      */
     @FormUrlEncoded
     @POST("/app/login/register")
-    Observable<RegisterBean> register(@Field("account") String account, @Field("password") String password, @Field("code") String code, @Field("referee_tel") String referee_tel);
+    Observable<BaseResponse<CommonBean>> register(@Field("account") String account, @Field("password") String password, @Field("code") String code, @Field("referee_tel") String referee_tel);
 
     /**
-     * 获取验证码
+     * 图形验证码
      *
      * @param phone 手机号
      * @param type  验证码类型：0注册 1修改密码 2找回密码 3付款 4绑定银行卡
      */
-//    @FormUrlEncoded
-    @GET("/app/login/getCode")
-    Observable<CommonBean> getCode(@Query("phone") String phone, @Query("type") String type);
+    @FormUrlEncoded
+    @POST("/app/login/getImageCode")
+    Observable<BaseResponse<ImageCodeBean>> getImageCode(@Field("phone") String phone, @Field("type") String type);
+
+    /**
+     * 短信验证码
+     *
+     * @param id         图形验证码ID
+     * @param image_code 图像验证码信息
+     */
+    @FormUrlEncoded
+    @POST("/app/login/getSmsCode")
+    Observable<BaseResponse<CommonBean>> getSmsCode(@Field("id") String id, @Field("image_code") String image_code);
 
     /**
      * 修改登录密码
@@ -122,7 +131,7 @@ public interface HttpClient {
      */
     @FormUrlEncoded
     @POST("/app/vmmember/changeLoginPassword")
-    Observable<CommonBean> changePsw(@Field("old_pwd") String old_pwd, @Field("new_pwd") String new_pwd);
+    Observable<BaseResponse<CommonBean>> changePsw(@Field("old_pwd") String old_pwd, @Field("new_pwd") String new_pwd);
 
     /**
      * 找回登录密码
@@ -133,7 +142,7 @@ public interface HttpClient {
      */
     @FormUrlEncoded
     @POST("/app/login/findPassword")
-    Observable<CommonBean> findPsw(@Field("account") String account, @Field("code") String code, @Field("password") String password);
+    Observable<BaseResponse<CommonBean>> findPsw(@Field("account") String account, @Field("code") String code, @Field("password") String password);
 
     //********************************************************************************************************************//
     //****************************************************产品操作相关*****************************************************//
@@ -147,7 +156,7 @@ public interface HttpClient {
      */
     @FormUrlEncoded
     @POST("/app/ororder/buy")
-    Observable<CommonBean> buy(@Field("product_id") String product_id, @Field("money") String money);
+    Observable<BaseResponse<CommonBean>> buy(@Field("product_id") String product_id, @Field("money") String money);
 
     /**
      * 赎回
@@ -157,7 +166,7 @@ public interface HttpClient {
      */
     @FormUrlEncoded
     @POST("/app/ororder/redeem")
-    Observable<CommonBean> redeem(@Field("product_id") String product_id, @Field("money") String money);
+    Observable<BaseResponse<CommonBean>> redeem(@Field("product_id") String product_id, @Field("money") String money);
 
     /**
      * 提现
@@ -166,7 +175,7 @@ public interface HttpClient {
      */
     @FormUrlEncoded
     @POST("/app/vmmembercash/cash")
-    Observable<CommonBean> withdraw(@Field("money") String money);
+    Observable<BaseResponse<CommonBean>> withdraw(@Field("money") String money);
 
     /**
      * 充值

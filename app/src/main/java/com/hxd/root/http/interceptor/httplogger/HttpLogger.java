@@ -11,9 +11,9 @@ import com.hxd.root.utils.DebugUtil;
  * <p>
  * 在Get请求时失效，故重新封装HttpLoggingInterceptor,区分处理
  */
-public class Logger implements LoggerInterceptor.Logger {
+public class HttpLogger implements HttpLoggerInterceptor.Logger {
 
-    private static final String TAG = "Logger";
+    private static final String TAG = "HttpLogger";
     private StringBuilder mMessage = new StringBuilder();
 
     @Override

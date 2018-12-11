@@ -7,14 +7,12 @@ import android.text.TextUtils;
 
 import com.hxd.root.app.Constants;
 import com.hxd.root.bean.CommonBean;
-import com.hxd.root.bean.login.RegisterBean;
+import com.hxd.root.bean.login.ImageCodeBean;
 import com.hxd.root.http.HttpClient;
+import com.hxd.root.http.base.BaseSubscriber;
+import com.hxd.root.http.exception.ResponseThrowable;
+import com.hxd.root.http.rxutils.RxUtils;
 import com.hxd.root.utils.ToastUtil;
-
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
 
 /**
  * @author Cazaea
@@ -36,32 +34,19 @@ public class RegisterViewModel extends ViewModel {
         if (!verifyPhoneInfo()) {
             return;
         }
-        HttpClient.Builder.getBaseServer().getCode(account.get(), Constants.CODE_TYPE_REGISTER)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<CommonBean>() {
+        HttpClient.Builder.getBaseServer()
+                .getImageCode(account.get(), Constants.CODE_TYPE_REGISTER)
+                .compose(RxUtils.schedulersTransformer())
+                .compose(RxUtils.exceptionTransformer())
+                .subscribe(new BaseSubscriber<ImageCodeBean>() {
                     @Override
-                    public void onComplete() {
+                    public void onError(ResponseThrowable e) {
+                        ToastUtil.showShort(e.getMessage());
                     }
 
                     @Override
-                    public void onError(Throwable e) {
-                    }
-
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(CommonBean bean) {
-                        if (bean != null && bean.getData() != null && bean.getCode() == 1000) {
-                            ToastUtil.showShort(bean.getMsg());
-                        } else {
-                            if (bean != null) {
-                                ToastUtil.showLong(bean.getMsg());
-                            }
-                        }
+                    public void onResult(ImageCodeBean pCodeBean) {
+                        ToastUtil.showShort("" + pCodeBean);
                     }
                 });
     }
@@ -75,34 +60,21 @@ public class RegisterViewModel extends ViewModel {
             data.setValue(false);
             return data;
         }
-        HttpClient.Builder.getBaseServer().register(account.get(), password.get(), code.get(), referee_tel.get())
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<RegisterBean>() {
+        HttpClient.Builder.getBaseServer()
+                .register(account.get(), password.get(), code.get(), referee_tel.get())
+                .compose(RxUtils.schedulersTransformer())
+                .compose(RxUtils.exceptionTransformer())
+                .subscribe(new BaseSubscriber<CommonBean>() {
                     @Override
-                    public void onComplete() {
+                    public void onError(ResponseThrowable e) {
+                        ToastUtil.showShort(e.getMessage());
+                        data.setValue(false);
                     }
 
                     @Override
-                    public void onError(Throwable e) {
-                    }
-
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(RegisterBean bean) {
-                        if (bean != null && bean.getData() != null && bean.getCode() == 1000) {
-                            ToastUtil.showShort(bean.getMsg());
-                            data.setValue(true);
-                        } else {
-                            if (bean != null) {
-                                ToastUtil.showLong(bean.getMsg());
-                            }
-                            data.setValue(false);
-                        }
+                    public void onResult(CommonBean pCommonBean) {
+                        ToastUtil.showShort("" + pCommonBean);
+                        data.setValue(true);
                     }
                 });
         return data;

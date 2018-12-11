@@ -32,7 +32,7 @@ import static okhttp3.internal.platform.Platform.INFO;
  * 重新封装HttpLoggingInterceptor,区分处理GET方法Json格式化异常
  */
 
-public final class LoggerInterceptor implements Interceptor {
+public final class HttpLoggerInterceptor implements Interceptor {
     private static final Charset UTF8 = Charset.forName("UTF-8");
 
     public enum Level {
@@ -63,11 +63,11 @@ public final class LoggerInterceptor implements Interceptor {
         Logger DEFAULT = message -> Platform.get().log(INFO, message, null);
     }
 
-    public LoggerInterceptor() {
+    public HttpLoggerInterceptor() {
         this(Logger.DEFAULT);
     }
 
-    public LoggerInterceptor(Logger logger) {
+    public HttpLoggerInterceptor(Logger logger) {
         this.logger = logger;
     }
 
@@ -78,7 +78,7 @@ public final class LoggerInterceptor implements Interceptor {
     /**
      * Change the level at which this interceptor logs.
      */
-    public LoggerInterceptor setLevel(Level level) {
+    public HttpLoggerInterceptor setLevel(Level level) {
         if (level == null) throw new NullPointerException("level == null. Use Level.NONE instead.");
         this.level = level;
         return this;
