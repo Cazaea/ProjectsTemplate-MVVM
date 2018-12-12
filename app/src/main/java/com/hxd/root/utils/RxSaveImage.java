@@ -29,18 +29,15 @@ import android.text.TextUtils;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.Target;
+import com.hxd.root.R;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import com.hxd.root.R;
-
 import io.reactivex.Observable;
-import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.ObservableSource;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -57,7 +54,7 @@ public class RxSaveImage {
                 subscriber.onError(new Exception("请检查图片路径"));
             }
             // 检查图片是否已存在
-            File appDir = new File(Environment.getExternalStorageDirectory(), "云阅相册");
+            File appDir = new File(Environment.getExternalStorageDirectory(), "濠寓相册");
             if (appDir.exists()) {
                 String fileName = title.replace('/', '-') + ".jpg";
                 File file = new File(appDir, fileName);
@@ -83,9 +80,10 @@ public class RxSaveImage {
             subscriber.onNext(bitmap);
             subscriber.onComplete();
         }).flatMap(bitmap -> {
-            File appDir = new File(Environment.getExternalStorageDirectory(), "云阅相册");
+            File appDir = new File(Environment.getExternalStorageDirectory(), "濠寓相册");
             if (!appDir.exists()) {
-                appDir.mkdir();
+                boolean success = appDir.mkdir();
+                DebugUtil.debug("相册创建：" + (success ? "成功" : "失败"));
             }
             String fileName = title.replace('/', '-') + ".jpg";
             File file = new File(appDir, fileName);
@@ -114,11 +112,11 @@ public class RxSaveImage {
         RxSaveImage.saveImageAndGetPathObservable(context, mImageUrl, mImageTitle)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(uri -> {
-                    File appDir = new File(Environment.getExternalStorageDirectory(), "云阅相册");
+                    File appDir = new File(Environment.getExternalStorageDirectory(), "濠寓相册");
                     String msg = String.format(CommonUtils.getString(R.string.picture_has_save_to), appDir.getAbsolutePath());
                     ToastUtil.showLong(msg);
                 }, error -> ToastUtil.showLong(error.getMessage()));
-        // @formatter:on
+//         @formatter:on
 //        addSubscription(s);
     }
 
