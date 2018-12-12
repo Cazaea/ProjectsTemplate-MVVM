@@ -9,11 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 
+import com.hxd.root.app.RootApplication;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
-
-import com.hxd.root.app.RootApplication;
 
 /**
  * Created by Cazaea on 2016/11/22.
@@ -53,6 +53,10 @@ public class CommonUtils {
 
     public static int getColor(int resId) {
         return getResource().getColor(resId);
+    }
+
+    public static int[] getArrayColor(int resId) {
+        return getResource().getIntArray(resId);
     }
 
     public static float getDimens(int resId) {
