@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">濠寓新版</string>
     <string name="app_description">这只是应用的介绍</string>
 
@@ -107,7 +107,7 @@
     <string name="string_url_trending">https://github.com/trending</string>
 
     <string name="string_load_error">加载失败,点击重试</string>
-    <string name="string_loading">努力加载中...</string>
+    <string name="string_loading" tools:ignore="TypographyEllipsis">努力加载中...</string>
     <string name="string_check_update">检查更新</string>
     <string name="string_update_log">更新日志</string>
     <string name="string_current_version">当前版本 V1.0.0</string>
@@ -144,7 +144,6 @@
     <string name="string_offline_logger">离线日志本地展示</string>
 
     <string name="string_my_gab">\t\t有一对情侣，男的非常懦弱，做什么事情之前都让女友先试。\n\t\t女友对此十分不满。\n\t\t一次，两人出海，返航时，飓风将小艇摧毁，幸亏女友抓住了一块木板才保住了两人的性命。\n\t\t女友问男友：“你怕吗？”\n\t\t男友从怀中掏出一把水果刀，说：\n\t\t“怕，但有鲨鱼来，我就用这个对付它。”\n\t\t女友只是摇头苦笑。\n\t\t不久，一艘货轮发现了他们，正当他们欣喜若狂时，一群鲨鱼出现了，女友大叫：\n\t\t“我们一起用力游，会没事的！”\n\t\t男友却突然用力将女友推进海里，扒着木板朝货轮游去，并喊道：\n\t\t“这次我先试！”\n\t\t女友惊呆了，望着男友的背影，感到非常绝望。\n\t\t鲨鱼正在靠近，可鲨鱼对女友不感兴趣而径直向男友游去，男友被鲨鱼凶猛地撕咬着，他发疯似地冲女友喊道：\n\t\t“我爱你！”\n\t\t女友获救了，甲板上的人都在默哀，船长坐到女友身边说：\n\t\t“小姐，他是我见过最勇敢的人。我们为他祈祷！”\n\t\t“不，他是个胆小鬼。”女友冷冷地说。\n\t\t“您怎么这样说呢？刚才我一直用望远镜观察你们，我清楚地看到他把你推开后用刀子割破了自己的手腕。鲨鱼对血腥味很敏感，如果他不这样做来争取时间，恐怕你永远不会出现在这艘船上。”\n\t\t“什么？”\n\t\t女友听到真相如同晴天霹雳，她悲痛欲绝，伤心无比，但她突然想到男友是做Java的。\n\t\t只有学做Java的程序员才有这么高的觉悟，Java是目前使用最为广泛的编程语言之一，它具有简单，面向对象，稳定，与平台无关，解释型，多线程，动态等特点。\n\t\t做Java的程序员品质优异，有强大的博学雅正融合的意识，并具备强大的心理承受能力，人文情怀，领袖气质。选择Java，就是选择成功！</string>
-
 
 
 </resources>

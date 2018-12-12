@@ -37,7 +37,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    android:text="加载失败,点击重试"
+                    android:text="@string/string_load_error"
                     android:textSize="14sp" />
             </LinearLayout>
 

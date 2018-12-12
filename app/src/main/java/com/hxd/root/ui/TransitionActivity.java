@@ -23,9 +23,9 @@ import java.lang.ref.WeakReference;
  */
 public class TransitionActivity extends AppCompatActivity {
 
-    public ActivityTransitionBinding mBinding;
     private boolean isIn;
     private MyHandler handler;
+    public ActivityTransitionBinding mBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
