@@ -139,6 +139,8 @@ dependencies {
     // 蜂窝动画
     implementation rootProject.ext.dependencies["nineoldandroids"]
 
+    // 应用介绍页
+    implementation 'com.github.apl-devs:appintro:v4.2.3'
     // Glide图片加载库
     implementation rootProject.ext.dependencies["glide"]
     annotationProcessor rootProject.ext.dependencies["glide-compiler"]

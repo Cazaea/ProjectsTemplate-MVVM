@@ -11,6 +11,9 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+    <!-- 震动权限 -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <!-- 危险权限 -->
     <!-- Camera -->
     <uses-permission android:name="android.permission.CAMERA" />
@@ -90,15 +93,20 @@
             android:screenOrientation="portrait"
             android:theme="@style/MyScrollPage" />
         <activity
-            android:name=".ui.TransitionActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/ViewBigPicTheme">
+            android:name=".ui.NavigationActivity"
+            android:theme="@style/ViewBigPicTheme"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".ui.TransitionActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ViewBigPicTheme" />
 
         <activity
             android:name=".ui.login.LoginActivity"

@@ -33,6 +33,8 @@ public class Constants {
     /**
      * Global Constants
      */
+    // 是否首次启动
+    public static String IS_FIRST = "is_first";
     // 是否已经登录
     public static String IS_LOGIN = "is_login";
     // 是否开启测试模式
