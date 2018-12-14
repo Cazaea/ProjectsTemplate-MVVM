@@ -123,7 +123,7 @@ public class HttpUtils {
      * @return API_ROOT
      */
     private String initRootApi() {
-        return SPUtils.getString(Constants.CUSTOM_SERVER, DebugUtil.isDebug() ? API_BETA : API_FORMAL);
+        return SPUtils.getString(Constants.APP_SERVER, DebugUtil.isDebug() ? API_BETA : API_FORMAL);
     }
 
     /**

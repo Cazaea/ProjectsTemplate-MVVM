@@ -1,46 +1,45 @@
 package com.hxd.root.app;
 
 /**
- * Created by Cazaea on 2016/11/26.
+ * @author Cazaea
+ * @time 2016/11/26 15:24
+ * @mail wistorm@sina.com
+ * <p>
  * 固定参数
  */
-
 public class Constants {
 
     /**
-     * 路由配置信息
+     * Router
      */
     public static final String ROUTER_HEAD = "lease";
-    public static final String ROUTER_TOTAL_HEAD = "lease://";
+    public static final String ROUTER_TOTAL = "lease://";
     public static final String ROUTER_WEBSITE = "www.lease.com";
 
     /**
-     * 验证码类型
-     * 0 注册 1修改密码 2找回密码 3付款 4绑定银行卡
+     * Global Constants
+     */
+    public static String IS_FIRST = "is_first";
+    public static String IS_LOGIN = "is_login";
+    public static String IS_DEBUG = "is_debug";
+
+    public static String APP_SERVER = "app_server";
+
+    /**
+     * Captcha type
+     * 0 注册账户 1修改密码 2找回密码 3付款 4绑定银行卡
      */
     public static final String CODE_TYPE_REGISTER = "0";
-    public static final String CODE_TYPE_MODIFY = "1";
-    public static final String CODE_TYPE_RECOVER = "2";
-    public static final String CODE_TYPE_PAY = "3";
-    public static final String CODE_TYPE_BIND = "4";
+    public static final String CODE_TYPE_MODIFY_PSW = "1";
+    public static final String CODE_TYPE_RECOVER_PSW = "2";
+    public static final String CODE_TYPE_PAY_MONEY = "3";
+    public static final String CODE_TYPE_BIND_CARD = "4";
 
     /**
      * App Skin Theme
      */
     public static final String NIGHT_SKIN = "night.skin";
     public static final String KEY_MODE_NIGHT = "mode-night";
-
-    /**
-     * Global Constants
-     */
-    // 是否首次启动
-    public static String IS_FIRST = "is_first";
-    // 是否已经登录
-    public static String IS_LOGIN = "is_login";
-    // 是否开启测试模式
-    public static String IS_DEBUG = "is_debug";
-    // 服务器地址(适应自定义)
-    public static String CUSTOM_SERVER = "custom_server";
 
     /**
      * App Cache

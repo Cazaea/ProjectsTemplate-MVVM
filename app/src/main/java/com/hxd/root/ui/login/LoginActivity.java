@@ -8,17 +8,20 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.hxd.root.R;
-import com.hxd.root.app.Constants;
 import com.hxd.root.base.BaseActivity;
 import com.hxd.root.databinding.ActivityLoginBinding;
+import com.hxd.root.ui.other.DevelopActivity;
 import com.hxd.root.utils.BaseTools;
 import com.hxd.root.utils.CommonUtils;
 import com.hxd.root.utils.DebugUtil;
 import com.hxd.root.vmodel.login.LoginViewModel;
-import com.thejoyrun.router.Router;
 
 /**
  * @author Cazaea
+ * @time 2017/6/23 17:24
+ * @mail wistorm@sina.com
+ * <p>
+ * 登录页面
  */
 public class LoginActivity extends BaseActivity<ActivityLoginBinding> {
 
@@ -46,10 +49,10 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding> {
     public void refreshDevelopStatus() {
         if (DebugUtil.isDebug()) {
             bindingView.tvVersion.setText(CommonUtils.getString(R.string.string_developer_mode_on, "Version:" + BaseTools.getVersionName()));
-            bindingView.tvVersion.setSingleClickListener(() -> Router.startActivity(LoginActivity.this, Constants.ROUTER_TOTAL_HEAD + "develop"));
+            bindingView.tvVersion.setSingleClickListener(() -> DevelopActivity.start(LoginActivity.this));
         } else {
             bindingView.tvVersion.setText("Version:" + BaseTools.getVersionName());
-            bindingView.tvVersion.setLongPressListener(() -> Router.startActivity(LoginActivity.this, Constants.ROUTER_TOTAL_HEAD + "develop"));
+            bindingView.tvVersion.setLongPressListener(() -> DevelopActivity.start(LoginActivity.this));
         }
     }
 

@@ -10,8 +10,11 @@ import com.hxd.root.base.baseadapter.BaseRecyclerViewHolder;
 import com.hxd.root.databinding.ItemListBinding;
 
 /**
+ * @author Cazaea
+ * @time 2017/6/23 17:24
+ * @mail wistorm@sina.com
+ * <p>
  * Template Adapter
- * Created by Cazaea on 2016/11/30.
  */
 public class Adapter extends BaseRecyclerViewAdapter<String> {
 
@@ -27,8 +30,8 @@ public class Adapter extends BaseRecyclerViewAdapter<String> {
             super(parent, layoutId);
         }
 
-        @SuppressLint("SetTextI18n")
         @Override
+        @SuppressLint("SetTextI18n")
         public void onBindViewHolder(String object, int position) {
             binding.tvText.setText("测试:  " + object);
         }
