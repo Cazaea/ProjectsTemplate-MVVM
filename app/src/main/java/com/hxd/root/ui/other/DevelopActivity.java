@@ -1,5 +1,8 @@
 package com.hxd.root.ui.other;
 
+import android.arch.lifecycle.ViewModelProviders;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -26,7 +29,7 @@ public class DevelopActivity extends BaseActivity<ActivityDevelopBinding> implem
         setBarColor(R.color.colorDevelopToolbar);
         showContentView();
 
-        viewModel = new DevelopViewModel(this);
+        viewModel = ViewModelProviders.of(this).get(DevelopViewModel.class);
         bindingView.setDevelop(viewModel);
         // 监听Switch按钮
         bindingView.switch1.setOnCheckedChangeListener(this);
@@ -59,6 +62,14 @@ public class DevelopActivity extends BaseActivity<ActivityDevelopBinding> implem
         SPUtils.putBoolean(Constants.IS_DEBUG, isChecked);
         // 分情况处理
         bindingView.llAllConfig.setVisibility(isChecked ? View.VISIBLE : View.GONE);
+    }
+
+    /**
+     * 进入页面
+     */
+    public static void start(Context mContext) {
+        Intent intent = new Intent(mContext, DevelopActivity.class);
+        mContext.startActivity(intent);
     }
 
 }
