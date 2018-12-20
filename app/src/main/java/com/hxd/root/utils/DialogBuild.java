@@ -18,10 +18,9 @@ import java.util.Objects;
 
 /**
  * @author Cazaea
- * @data 2018/2/27
+ * @date 2018/2/27
  * @Description
  */
-
 public class DialogBuild {
 
     /**
@@ -88,7 +87,7 @@ public class DialogBuild {
     }
 
     /**
-     * 弹出登录窗口
+     * 弹出登录选择窗口
      *
      * @param view
      * @param items    显示信息

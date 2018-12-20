@@ -6,7 +6,6 @@ import android.support.annotation.NonNull;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.view.KeyEvent;
-import android.view.View;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.GravityEnum;
@@ -17,17 +16,16 @@ import com.hxd.root.R;
 import java.util.List;
 
 /**
- * Created by goldze on 2017/5/10.
+ * Created by Cazaea on 2017/5/10.
  */
-
 public class DialogUtil {
 
     public void showThemed(Context context, String title, String content) {
         new MaterialDialog.Builder(context)
                 .title(title)
                 .content(content)
-                .positiveText("agree")
-                .negativeText("disagree")
+                .positiveText("同意")
+                .negativeText("不同意")
                 .positiveColorRes(R.color.colorWhite)
                 .negativeColorRes(R.color.colorWhite)
                 .titleGravity(GravityEnum.CENTER)
@@ -90,16 +88,15 @@ public class DialogUtil {
 
 
     /***
-     * 获取基本对话框
+     * 获取基本标题对话框
      *
      * @param
      * @return MaterialDialog.Builder
      */
-    public static MaterialDialog.Builder showBasicDialog(final Context context, String
-            content) {
+    public static MaterialDialog.Builder showBasicDialog(final Context context, String title) {
 
-        MaterialDialog.Builder builder = new MaterialDialog.Builder(context)
-                .title(content)
+        return new MaterialDialog.Builder(context)
+                .title(title)
                 .positiveText("确定")
                 .negativeText("取消")
 //                .btnStackedGravity(GravityEnum.END)         //按钮排列位置
@@ -114,8 +111,21 @@ public class DialogUtil {
 //                })
 //                .checkBoxPromptRes(R.string.app_name, false, null)
                 ;
+    }
 
-        return builder;
+    /***
+     * 显示一个基础的对话框  带标题 带内容
+     * 吴志杰
+     * @param
+     * @return MaterialDialog.Builder
+     */
+    public static MaterialDialog.Builder showBasicDialog(final Context context, String title, String content) {
+
+        return new MaterialDialog.Builder(context)
+                .title(title)
+                .content(content)
+                .positiveText("确定")
+                .negativeText("取消");
     }
 
     /***
@@ -126,12 +136,10 @@ public class DialogUtil {
      */
     public static MaterialDialog.Builder showBasicDialogNoTitle(final Context context, String content) {
 
-        MaterialDialog.Builder builder = new MaterialDialog.Builder(context)
+        return new MaterialDialog.Builder(context)
                 .content(content)
                 .positiveText("确定")
                 .negativeText("取消");
-
-        return builder;
     }
 
 
@@ -142,33 +150,12 @@ public class DialogUtil {
      * @param
      * @return MaterialDialog.Builder
      */
-    public static MaterialDialog.Builder showBasicDialogNoCancel(final Context context, String
-            title, String content) {
+    public static MaterialDialog.Builder showBasicDialogNoCancel(final Context context, String title, String content) {
 
-        MaterialDialog.Builder builder = new MaterialDialog.Builder(context)
+        return new MaterialDialog.Builder(context)
                 .title(title)
                 .content(content)
                 .positiveText("确定");
-
-        return builder;
-    }
-
-    /***
-     * 显示一个基础的对话框  带标题 带内容
-     * 吴志杰
-     * @param
-     * @return MaterialDialog.Builder
-     */
-    public static MaterialDialog.Builder showBasicDialog(final Context context, String
-            title, String content) {
-
-        MaterialDialog.Builder builder = new MaterialDialog.Builder(context)
-                .title(title)
-                .content(content)
-                .positiveText("确定")
-                .negativeText("取消");
-
-        return builder;
     }
 
     /***
@@ -176,16 +163,13 @@ public class DialogUtil {
      * 吴志杰
      * @return MaterialDialog.Builder
      */
-    public static MaterialDialog.Builder showBasicDialogPositive(final Context context, String
-            title, String content) {
+    public static MaterialDialog.Builder showBasicDialogPositive(final Context context, String title, String content) {
 
-        MaterialDialog.Builder builder = new MaterialDialog.Builder(context)
+        return new MaterialDialog.Builder(context)
                 .title(title)
                 .content(content)
                 .positiveText("复制")
                 .negativeText("取消");
-
-        return builder;
     }
 
     /***
@@ -217,11 +201,8 @@ public class DialogUtil {
         MaterialDialog.Builder builder = new MaterialDialog.Builder(context)
                 .title(title)
                 .items(content)
-                .itemsCallback(new MaterialDialog.ListCallback() {
-                    @Override
-                    public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
+                .itemsCallback((dialog, itemView, position, text) -> {
 
-                    }
                 })
                 .negativeText("取消")
 //                .checkBoxPromptRes(R.string.app_name, false, null)
@@ -242,14 +223,9 @@ public class DialogUtil {
         MaterialDialog.Builder builder = new MaterialDialog.Builder(context)
                 .title(title)
                 .items(content)
-                .itemsCallbackSingleChoice(1, new MaterialDialog.ListCallbackSingleChoice() {
-                    @Override
-                    public boolean onSelection(MaterialDialog dialog, View itemView, int which,
-                                               CharSequence text) {
+                .itemsCallbackSingleChoice(1, (dialog, itemView, which, text) -> {
 
-
-                        return true; // allow selection
-                    }
+                    return true; // allow selection
                 })
                 .positiveText("选择");
 
@@ -269,21 +245,11 @@ public class DialogUtil {
         MaterialDialog.Builder builder = new MaterialDialog.Builder(context)
                 .title(title)
                 .items(content)
-                .itemsCallbackMultiChoice(new Integer[]{1, 3}, new MaterialDialog
-                        .ListCallbackMultiChoice() {
-                    @Override
-                    public boolean onSelection(MaterialDialog dialog, Integer[] which, CharSequence[] text) {
+                .itemsCallbackMultiChoice(new Integer[]{1, 3}, (dialog, which, text) -> {
 
-
-                        return true; // allow selection
-                    }
+                    return true; // allow selection
                 })
-                .onNeutral(new MaterialDialog.SingleButtonCallback() {
-                    @Override
-                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                        dialog.clearSelectedIndices();
-                    }
-                })
+                .onNeutral((dialog, which) -> dialog.clearSelectedIndices())
                 .alwaysCallMultiChoiceCallback()
                 .positiveText(R.string.md_choose_label)
                 .autoDismiss(false)
@@ -308,11 +274,8 @@ public class DialogUtil {
                 .customView(content, true)
                 .positiveText("确定")
                 .negativeText(android.R.string.cancel)
-                .onPositive(new MaterialDialog.SingleButtonCallback() {
-                    @Override
-                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                .onPositive((dialog1, which) -> {
 
-                    }
                 }).build();
 
 //        positiveAction = dialog.getActionButton(DialogAction.POSITIVE);
