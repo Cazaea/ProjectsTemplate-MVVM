@@ -46,6 +46,15 @@ import com.hxd.root.view.web.config.MyWebViewClient;
 @SuppressLint("Registered")
 public class WebViewActivity extends AppCompatActivity implements IWebPageView {
 
+    // 网页标题
+    private String mTitle;
+    // 网页链接
+    private String mUrl;
+    // 可滚动的title 使用复杂 文字显示有渐变效果，文字两旁没有阴影
+    private TextSwitcher mTsTitle;
+    // 可滚动的title 使用简单 没有渐变效果，文字两旁有阴影
+    private TextView tvGunTitle;
+
     // 进度条
     private ProgressBar mProgressBar;
     private WebView webView;
@@ -54,14 +63,6 @@ public class WebViewActivity extends AppCompatActivity implements IWebPageView {
     private Toolbar mTitleToolBar;
     // 加载视频相关
     private MyWebChromeClient mWebChromeClient;
-    // title
-    private String mTitle;
-    // 网页链接
-    private String mUrl;
-    // 可滚动的title 使用复杂 文字显示有渐变效果，文字两旁没有阴影
-    private TextSwitcher mTsTitle;
-    // 可滚动的title 使用简单 没有渐变效果，文字两旁有阴影
-    private TextView tvGunTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,7 +125,7 @@ public class WebViewActivity extends AppCompatActivity implements IWebPageView {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.webview_menu, menu);
+        getMenuInflater().inflate(R.menu.menu_webview, menu);
         return true;
     }
 

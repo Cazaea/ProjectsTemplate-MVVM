@@ -4,38 +4,20 @@
         android:id="@+id/menu_home"
         android:icon="@drawable/icon_main_home"
         android:orderInCategory="1"
-        android:title="资讯" />
+        android:title="@string/string_information" />
     <item
         android:id="@+id/menu_product"
         android:icon="@drawable/icon_main_product"
         android:orderInCategory="2"
-        android:title="项目" />
+        android:title="@string/string_product" />
     <item
         android:id="@+id/menu_lease"
         android:icon="@drawable/icon_main_lease"
         android:orderInCategory="3"
-        android:title="租房" />
+        android:title="@string/string_lease" />
     <item
         android:id="@+id/menu_mine"
         android:icon="@drawable/icon_main_mine"
         android:orderInCategory="4"
-        android:title="我的" />
-
-    <!-- 参数说明 -->
-    <!--
-         android:title : 这是标签中默认必须要写的参数，暂时没用到，可以在类BottomMenuItem中通过getTitle()拿到当前tab的title
-
-         app:nb_tabActiveResId : 为当前item(即当前tab）设置当其选中时的图片id。
-
-         app:nb_tabInActiveResId : 为当前item(即当前tab）设置当其未选中时的图片id。
-
-         app:nb_insetLeft : 设置当前Item(即当前tab)的背景图片距离左边缘的距离，具体下面有图解
-
-         app:nb_insetTop : 设置当前Item(即当前tab)的背景图片距离上边缘的距离，具体下面有图解
-
-         app:nb_insetRight ： 设置当前Item(即当前tab)的背景图片距离右边缘的距离，具体下面有图解
-
-         app:nb_insetBottom ： 设置当前Item(即当前tab)的背景图片距离下边缘的距离，具体下面有图解
-    -->
-
+        android:title="@string/string_mine" />
 </menu>

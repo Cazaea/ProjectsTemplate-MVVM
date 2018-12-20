@@ -30,10 +30,9 @@ public class MyWebViewClient extends WebViewClient {
 
     }
 
-    @SuppressWarnings("deprecation")
     @Override
+    @SuppressWarnings("deprecation")
     public boolean shouldOverrideUrlLoading(WebView view, String url) {
-//        DebugUtil.error("----url:"+url);
         if (TextUtils.isEmpty(url)) {
             return false;
         }

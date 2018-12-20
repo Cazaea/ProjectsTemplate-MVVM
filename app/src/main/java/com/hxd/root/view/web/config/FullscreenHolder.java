@@ -8,7 +8,6 @@ import android.widget.FrameLayout;
 /**
  * Created by Cazaea on 2016/11/17.
  */
-
 public class FullscreenHolder extends FrameLayout {
 
     public FullscreenHolder(Context ctx) {

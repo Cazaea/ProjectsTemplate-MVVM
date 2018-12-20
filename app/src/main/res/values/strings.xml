@@ -26,6 +26,13 @@
     <string name="referrer_phone">推荐人手机号(没有可不填)</string>
     <string name="register">注 册</string>
 
+    <!-- Main页面Menu -->
+    <string name="string_information">资讯</string>
+    <string name="string_product">项目</string>
+    <string name="string_lease">租房</string>
+    <string name="string_mine">我的</string>
+
+
     <!-- Web页面 -->
     <string name="actionbar_web_share">分享到</string>
     <string name="actionbar_web_copy">复制链接</string>
@@ -106,44 +113,77 @@
     <!--每日推荐-->
     <string name="string_url_trending">https://github.com/trending</string>
 
+    <!--  -->
+    <string name="string_left_arrow">《</string>
+    <string name="string_right_arrow">》</string>
     <string name="string_load_error">加载失败,点击重试</string>
     <string name="string_loading" tools:ignore="TypographyEllipsis">努力加载中...</string>
     <string name="string_check_update">检查更新</string>
     <string name="string_update_log">更新日志</string>
     <string name="string_current_version">当前版本 V1.0.0</string>
     <string name="string_give_star">给个Star吧</string>
-    <string name="string_star_description">很高兴您能使用，如感到满意请Star一下吧，我们将继续迭代，增加更多功能，O(∩_∩)O ~</string>
-    <string name="string_left_arrow">《</string>
-    <string name="string_right_arrow">》</string>
-    <string name="string_gank">代码家 · 干货集中营</string>
-    <string name="string_douban">豆瓣开发者服务使用条款</string>
-    <string name="string_scan_download">好用请推荐给你的小伙伴吧，使用微信、qq等扫描二维码，即可下载安装~</string>
-    <string name="string_share_app">分享云阅开源客户端</string>
-    <string name="string_satisfied_star">如感到满意请Star一下吧，我们将继续迭代，增加更多功能，O(∩_∩)O ~</string>
-    <string name="string_issues">Issues</string>
-    <string name="string_github_project_name">CloudReader</string>
-    <string name="string_common_problem">常见问题归纳</string>
+
     <string name="string_qq">QQ</string>
     <string name="string_email">Email</string>
     <string name="string_jian_shu">简书</string>
     <string name="string_contact_me">联系我</string>
-    <string name="string_have_header_activity">有头的activity</string>
-    <string name="string_title">标题</string>
+    <string name="string_common_problem">常见问题归纳</string>
+
+    <!-- 分享与评价 -->
+    <string name="string_share_app">分享濠寓客户端</string>
+    <string name="string_scan_download">好用请推荐给你的小伙伴吧，使用微信、QQ等扫描二维码，即可下载安装~</string>
+    <string name="string_satisfied_star">如感到满意请到应用商店给5星好评，我们将继续迭代，增加更多功能，感谢您的使用~</string>
+    <string name="string_star_description">很高兴您能使用，如感到满意请Star一下吧，我们将继续迭代，增加更多功能，O(∩_∩)O ~</string>
+
+    <!-- 常用按钮 -->
     <string name="string_jump">跳过</string>
-    <string name="string_save_image">保存</string>
     <string name="string_back">返回</string>
-    <string name="string_developer_option">开发人员选项</string>
+    <string name="string_save">保存</string>
+    <string name="string_select">选择</string>
+
+    <!-- 开发者信息 -->
     <string name="string_developer_mode">开发者模式</string>
+    <string name="string_developer_option">开发人员选项</string>
     <string name="string_developer_mode_on">开发者模式\n%s</string>
     <string name="string_config_server">服务器地址配置</string>
-    <string name="string_select">选择</string>
     <string name="string_formal_server">https://www.haoyu.top</string>
     <string name="string_beta_server">http://lease.nfc-hxd.com</string>
     <string name="string_input_server">输入服务器地址</string>
     <string name="string_sure_config">确认配置</string>
     <string name="string_offline_logger">离线日志本地展示</string>
 
-    <string name="string_my_gab">\t\t有一对情侣，男的非常懦弱，做什么事情之前都让女友先试。\n\t\t女友对此十分不满。\n\t\t一次，两人出海，返航时，飓风将小艇摧毁，幸亏女友抓住了一块木板才保住了两人的性命。\n\t\t女友问男友：“你怕吗？”\n\t\t男友从怀中掏出一把水果刀，说：\n\t\t“怕，但有鲨鱼来，我就用这个对付它。”\n\t\t女友只是摇头苦笑。\n\t\t不久，一艘货轮发现了他们，正当他们欣喜若狂时，一群鲨鱼出现了，女友大叫：\n\t\t“我们一起用力游，会没事的！”\n\t\t男友却突然用力将女友推进海里，扒着木板朝货轮游去，并喊道：\n\t\t“这次我先试！”\n\t\t女友惊呆了，望着男友的背影，感到非常绝望。\n\t\t鲨鱼正在靠近，可鲨鱼对女友不感兴趣而径直向男友游去，男友被鲨鱼凶猛地撕咬着，他发疯似地冲女友喊道：\n\t\t“我爱你！”\n\t\t女友获救了，甲板上的人都在默哀，船长坐到女友身边说：\n\t\t“小姐，他是我见过最勇敢的人。我们为他祈祷！”\n\t\t“不，他是个胆小鬼。”女友冷冷地说。\n\t\t“您怎么这样说呢？刚才我一直用望远镜观察你们，我清楚地看到他把你推开后用刀子割破了自己的手腕。鲨鱼对血腥味很敏感，如果他不这样做来争取时间，恐怕你永远不会出现在这艘船上。”\n\t\t“什么？”\n\t\t女友听到真相如同晴天霹雳，她悲痛欲绝，伤心无比，但她突然想到男友是做Java的。\n\t\t只有学做Java的程序员才有这么高的觉悟，Java是目前使用最为广泛的编程语言之一，它具有简单，面向对象，稳定，与平台无关，解释型，多线程，动态等特点。\n\t\t做Java的程序员品质优异，有强大的博学雅正融合的意识，并具备强大的心理承受能力，人文情怀，领袖气质。选择Java，就是选择成功！</string>
+    <!-- 暂时无用 -->
+    <string name="string_title">标题</string>
+    <string name="string_issues">Issues</string>
+    <string name="string_github_project_name">CloudReader</string>
+    <string name="string_gank">代码家 · 干货集中营</string>
+    <string name="string_douban">豆瓣开发者服务使用条款</string>
+    <string name="string_have_header_activity">有头的activity</string>
+
+
+
+
+    <!-- 瞎扯信息 -->
+    <string name="string_my_gab">
+        \t\t有一对情侣，男的非常懦弱，做什么事情之前都让女友先试。
+        \n\t\t女友对此十分不满。
+        \n\t\t一次，两人出海，返航时，飓风将小艇摧毁，幸亏女友抓住了一块木板才保住了两人的性命。
+        \n\t\t女友问男友：“你怕吗？”\n\t\t男友从怀中掏出一把水果刀，说：
+        \n\t\t“怕，但有鲨鱼来，我就用这个对付它。”
+        \n\t\t女友只是摇头苦笑。
+        \n\t\t不久，一艘货轮发现了他们，正当他们欣喜若狂时，一群鲨鱼出现了，女友大叫：
+        \n\t\t“我们一起用力游，会没事的！”
+        \n\t\t男友却突然用力将女友推进海里，扒着木板朝货轮游去，并喊道：
+        \n\t\t“这次我先试！”\n\t\t女友惊呆了，望着男友的背影，感到非常绝望。
+        \n\t\t鲨鱼正在靠近，可鲨鱼对女友不感兴趣而径直向男友游去，男友被鲨鱼凶猛地撕咬着，他发疯似地冲女友喊道：
+        \n\t\t“我爱你！”\n\t\t女友获救了，甲板上的人都在默哀，船长坐到女友身边说：
+        \n\t\t“小姐，他是我见过最勇敢的人。我们为他祈祷！”
+        \n\t\t“不，他是个胆小鬼。”女友冷冷地说。
+        \n\t\t“您怎么这样说呢？刚才我一直用望远镜观察你们，我清楚地看到他把你推开后用刀子割破了自己的手腕。鲨鱼对血腥味很敏感，如果他不这样做来争取时间，恐怕你永远不会出现在这艘船上。”
+        \n\t\t“什么？”\n\t\t女友听到真相如同晴天霹雳，她悲痛欲绝，伤心无比，但她突然想到男友是做Java的。
+        \n\t\t只有学做Java的程序员才有这么高的觉悟，Java是目前使用最为广泛的编程语言之一，它具有简单，面向对象，稳定，与平台无关，解释型，多线程，动态等特点。
+        \n\t\t做Java的程序员品质优异，有强大的博学雅正融合的意识，并具备强大的心理承受能力，人文情怀，领袖气质。选择Java，就是选择成功！
+    </string>
 
 
 </resources>

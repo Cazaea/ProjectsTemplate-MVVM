@@ -31,7 +31,6 @@ import static okhttp3.internal.platform.Platform.INFO;
  * <p>
  * 重新封装HttpLoggingInterceptor,区分处理GET方法Json格式化异常
  */
-
 public final class HttpLoggerInterceptor implements Interceptor {
     private static final Charset UTF8 = Charset.forName("UTF-8");
 
@@ -115,7 +114,7 @@ public final class HttpLoggerInterceptor implements Interceptor {
         // 打印请求链接
         logger.log(requestStartMessage);
         // 打印固定参数
-        logger.log(RequestUrlUtil.getParamMap(request.url().toString().trim()).toString().replace(" ",""));
+        logger.log(RequestUrlUtil.getParamMap(request.url().toString().trim()).toString().replace(" ", ""));
 
         if (logHeaders) {
             if (hasRequestBody) {
@@ -188,7 +187,7 @@ public final class HttpLoggerInterceptor implements Interceptor {
                 + response.message() + ' '
                 + "(" + tookMs + "ms" + (!logHeaders ? ", " + bodySize + " body" : "") + ')'
         );
-        logger.log("Url:"+request.url());
+        logger.log("Url:" + request.url());
 
         if (logHeaders) {
             Headers headers = response.headers();

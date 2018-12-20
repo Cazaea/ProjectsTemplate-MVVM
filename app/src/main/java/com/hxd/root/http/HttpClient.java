@@ -28,6 +28,8 @@ import retrofit2.http.Query;
  * @date 16/11/21
  * <p>
  * 网络请求类（一个接口一个方法）
+ * 如果接口需要传递参数，使用POST请求
+ * 如果只是获取数据用于展示则最好使用GET请求
  */
 public interface HttpClient {
 

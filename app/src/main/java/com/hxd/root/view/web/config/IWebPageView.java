@@ -13,12 +13,12 @@ public interface IWebPageView {
     void hindProgressBar();
 
     /**
-     * 显示webView
+     * 显示WebView
      */
     void showWebView();
 
     /**
-     * 隐藏webView
+     * 隐藏WebView
      */
     void hindWebView();
 
