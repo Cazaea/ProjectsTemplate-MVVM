@@ -33,7 +33,7 @@ public class RecoverViewModel extends ViewModel {
             return;
         }
         HttpClient.Builder.getBaseServer()
-                .getImageCode(account.get(), Constants.CODE_TYPE_RECOVER)
+                .getImageCode(account.get(), Constants.CODE_TYPE_RECOVER_PSW)
                 .compose(RxUtils.schedulersTransformer())
                 .compose(RxUtils.exceptionTransformer())
                 .subscribe(new BaseSubscriber<ImageCodeBean>() {
