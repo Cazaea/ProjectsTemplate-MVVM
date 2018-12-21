@@ -31,9 +31,6 @@ import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
-
-import java.lang.reflect.Method;
-
 import com.hxd.root.R;
 import com.hxd.root.databinding.BaseHeaderTitleBarBinding;
 import com.hxd.root.utils.CommonUtils;
@@ -41,7 +38,8 @@ import com.hxd.root.utils.PerfectClickListener;
 import com.hxd.root.view.CustomChangeBounds;
 import com.hxd.root.view.MyNestedScrollView;
 import com.hxd.root.view.statusbar.StatusBarUtil;
-import com.hxd.root.view.test.StatusBarUtils;
+
+import java.lang.reflect.Method;
 
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
@@ -296,7 +294,7 @@ public abstract class BaseHeaderActivity<HV extends ViewDataBinding, SV extends 
         ivTitleHeadBgParams.setMargins(0, -marginTop, 0, 0);
 
         bindingTitleView.ivBaseTitleBarBg.setImageAlpha(0);
-        StatusBarUtils.setTranslucentImageHeader(this, 0, bindingTitleView.tbBaseTitle);
+        StatusBarUtil.setTranslucentForImageView(this, 0, bindingTitleView.tbBaseTitle);
 
         // 上移背景图片，使空白状态栏消失(这样下方就空了状态栏的高度)
         if (mHeaderBg != null) {
